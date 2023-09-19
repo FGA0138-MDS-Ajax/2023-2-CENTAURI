@@ -1,0 +1,3 @@
+[submodule "MDS-Backend"]
+	path = MDS-Backend
+	url = git@github.com:tH0m4Ssxsqrd/MDS-Backend.git
