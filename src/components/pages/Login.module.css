@@ -4,7 +4,7 @@
   }
 
 .login_container{
-    background-color: #FFFFFF;
+    background-color: #F0EFFF;
     background-size: cover;
     width: 90%;
     min-height: 100vh;
@@ -30,6 +30,7 @@
     top: 170px;
     left: 50px;
 }
+
 
 .c1 button:hover{
     transform: scale(1.1);
@@ -59,6 +60,12 @@
     position: absolute;
     top: 700px;
     left: 200px;
+    font-size: 45px;
+    color: #000;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .logo {
@@ -72,4 +79,10 @@
     position: absolute;
     top: 150px;
     left: 50px;
+}
+
+.g {
+    position: absolute;
+    top: 190px;
+    left: 70px;
 }
