@@ -59,13 +59,28 @@
 .bv {
     position: absolute;
     top: 700px;
-    left: 200px;
+    left: 150px;
     font-size: 45px;
     color: #000;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+.onda{
+    top: 0px;
+    left: -50px;
+    position: absolute;
+    width: 920px;
+    height: 1035px;
+}
+.ondablue{
+    top: 0px;
+    left: -35px;
+    position: absolute;
+    width: 920px;
+    height: 1035px;
 }
 
 .logo {

@@ -2,10 +2,14 @@ import styles from "./Login.module.css"
 import logo from "../img/logo.svg"
 import menino from "../img/Menino com celular.svg"
 import google from "../img/Google.svg"
+import onda from "../img/Rectangle 7.svg"
+import ondablue from "../img/Rectangle 11.svg"
 
 function Login(){
     return(
         <div className={styles.login_container}>
+            <img src = {ondablue} className={styles.ondablue}></img>
+            <img src = {onda} className={styles.onda}></img>
             <img src = {logo} className={styles.logo}></img>
             <img src = {menino} className={styles.Menino}></img>
             <h1 className={styles.bv}>Bem vindo ao UnBuscas</h1>
