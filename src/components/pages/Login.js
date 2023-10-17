@@ -12,7 +12,7 @@ function Login(){
             <img src = {onda} className={styles.onda}></img>
             <img src = {logo} className={styles.logo}></img>
             <img src = {menino} className={styles.Menino}></img>
-            <h1 className={styles.bv}>Bem vindo ao UnBuscas</h1>
+            <h1 className={styles.bv}>Bem vindos ao UnBuscas</h1>
                 <div className={styles.c1}>
                     <h1>Entre na sua conta</h1>  
                     <hr/> 
