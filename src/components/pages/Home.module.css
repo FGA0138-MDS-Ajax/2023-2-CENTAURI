@@ -1,24 +1,40 @@
+@font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  }
+
+*{
+    max-width: 100%;
+    margin: 0 auto; 
+
+}
+
 .home_container{
     width: 90%;
     min-height: 100vh;
     padding: 5%;
     background-position: center;
     background-size: cover;
-    background-color: black;
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .search_bar{
-    width: 100%;
-    max-width: 700px;
-    background: rgba(255, 255, 255, 0.2);
+    
+    top: 400px;
+    width: 792px;
+    height: 46px;
+    background: #FAFAFA;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
     border-radius: 60px;
     padding: 10px 20px;
+    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    color: black;
 }
 
 .search_bar input{
@@ -28,11 +44,15 @@
     outline: none;
     padding: 24px 20px;
     font-size: 20px;
-    color: #cac7ff;
+    color: black;
+    box-shadow: #929292;
 }
 
 ::placeholder{
-    color: #cac7ff;
+    color: #929292;
+    font-family: Poppins, serif;
+    font-size: 25px;
+    top: 60px;
 }
 
 .search_bar button img{
@@ -44,6 +64,99 @@
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    background: #58629b;
+    background: #A7A3FF;
+}
+.search_bar button:hover{
     cursor: pointer;
+}
+
+.logo {
+    position: absolute;
+    left:800px;
+    top:300px;
+}
+
+.h{
+    position: absolute;
+    top:650px;
+    left:700px;
+    font-family: Poppins, serif;
+    font-size: 20px;
+    
+}
+
+.h button{
+    position: absolute;
+    left:200px;
+    border-radius: 50px;
+    background-color: #918BFF;
+    width: 60px;
+    height: 60px;
+}
+
+.h button:hover{
+    transform: scale(1.1);
+    
+}
+
+.botaoLogin{
+    position: absolute;
+    top:50px;
+    left:1700px;
+    width: 140px;
+    height: 30px;
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
+}
+
+.botaoLogin:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.onda{
+    left: 0px;
+    top: 200px;
+    position: absolute;
+    width: 2000px;
+    height: 2435px;
+}
+
+.menina{
+    position: absolute;
+    left: 1200px;
+    top: 1000px;
+}
+
+.fundo{
+    position: absolute;
+    left: 1100px;
+    top: 1100px;
+}
+
+.titulo{
+    position: absolute;
+    left: 200px;
+    top: 1200px;
+    font-family: Poppins, serif;
+    font-size: 50px;   
+}
+
+.texto{
+    position: absolute;
+    left: 200px;
+    top: 1350px;
+    font-family: Poppins, serif;
+    font-size: 40px;   
+}
+
+.texto2{
+    position: absolute;
+    left: 200px;
+    top: 1600px;
+    font-family: Poppins, serif;
+    font-size: 30px;   
 }
