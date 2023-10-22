@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  }
+
+*{
+    max-width: 100%;
+    margin: 0 auto; 
+
+}
+
+.search_container{
+    width: 80%;
+    min-height: 100vh;
+    padding: 0 2rem;
+    background-position: center;
+    background-size: cover;
+    background-color: #FFFFFF;
+    display: inline;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.search_bar{
+    width: 792px;
+    height: 46px;
+    margin-bottom: 20px;
+    background: #FAFAFA;
+    display: flex;
+    border-radius: 60px;
+    padding: 10px 20px;
+    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    color: black;
+}
+
+.search_bar input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 30px;
+    color: black;
+    box-shadow: #929292;
+}
+
+::placeholder{
+    color: #929292;
+    font-family: Poppins, serif;
+    font-size: 25px;
+    top: 60px;
+}
+
+.search_bar button img{
+    width: 25px;
+}
+
+.search_bar button{
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: #A7A3FF;
+}
+.search_bar button:hover{
+    cursor: pointer;
+}
+
+.h{
+    position: absolute;
+    top:650px;
+    left:700px;
+    font-family: Poppins, serif;
+    font-size: 20px;
+    
+}
+
+.h button{
+    position: absolute;
+    left:200px;
+    border-radius: 50px;
+    background-color: #918BFF;
+    width: 60px;
+    height: 60px;
+}
+
+.h button:hover{
+    transform: scale(1.1);
+    
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
