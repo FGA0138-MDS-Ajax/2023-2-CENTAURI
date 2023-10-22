@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["actix_server","document_parser","webscraper"];
