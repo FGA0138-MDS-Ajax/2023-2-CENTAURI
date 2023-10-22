@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "Document_Parser",
+    "Server",
+    "WebScraper"
+]
+resolver = "2"
