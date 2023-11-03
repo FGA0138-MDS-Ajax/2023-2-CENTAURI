@@ -50,7 +50,11 @@ function Pesquisa(){
                         <br/></td>
                     </tr>
             }
+<<<<<<< HEAD
             )};
+=======
+            )}
+>>>>>>> b2700712bc66ff82e2f062098ffe21d154e191c6
             </div>
         </div>
 )};
