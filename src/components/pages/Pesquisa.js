@@ -50,7 +50,7 @@ function Pesquisa(){
                         <br/></td>
                     </tr>
             }
-            )}
+            )};
             </div>
         </div>
 )};
