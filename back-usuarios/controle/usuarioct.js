@@ -24,3 +24,20 @@ export const getUsers = (_, res) =>
     });
 
 };
+
+export const addUser = (req, res) => {
+    const q =
+      "INSERT INTO user(`nome`, `email`, `token`) VALUES(?)";
+  
+    const values = [
+      req.decoded.nome,
+      req.decoded.email,
+      req.decoded.sub
+    ];
+  
+    db.query(q, [values], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Usuário criado com sucesso.");
+    });
+  };
