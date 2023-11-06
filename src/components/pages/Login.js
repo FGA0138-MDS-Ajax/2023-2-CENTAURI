@@ -4,6 +4,8 @@ import menino from "../img/Menino com celular.svg"
 import google from "../img/Google.svg"
 import onda from "../img/Rectangle 7.svg"
 import ondablue from "../img/Rectangle 11.svg"
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function Login(){
     return(
@@ -16,8 +18,18 @@ function Login(){
                 <div className={styles.c1}>
                     <h1>Entre na sua conta</h1>  
                     <hr/> 
-                    <button className={styles.button} type="submit" id="botao">Continue com Google</button>
-                    <img src = {google} className={styles.g}></img>
+                    <GoogleOAuthProvider clientId="829989984645-1n9j5s35r34n85fkj83hjiiisc6jg20e.apps.googleusercontent.com">
+                    <GoogleLogin
+                        onSuccess={credentialResponse => {
+                            const decoded = jwtDecode(credentialResponse.credential);
+                            console.log(decoded);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                        />
+                        
+                    </GoogleOAuthProvider>
                 </div>       
         </div>
 

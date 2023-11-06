@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /back-motor-de-busca/data.ms/indexes
-/back-usuarios/node_modules
+/back-usuarios/node_modules/indexes
 
 # testing
 /coverage
