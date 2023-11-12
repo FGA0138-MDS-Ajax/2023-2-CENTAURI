@@ -15,7 +15,7 @@
     justify-content: center;
 }
 
-.c1 button{
+.google_container button{
     position: absolute;
     width: 369px;
     height: 59px;
@@ -32,13 +32,13 @@
 }
 
 
-.c1 button:hover{
+.google_container button:hover{
     transform: scale(1.1);
     
 }
 
 
-.c1{
+.google_container{
     position: absolute;
     width: 464px;
     height: 299px;
@@ -50,7 +50,7 @@
     left: 1200px;
 }
 
-.c1 h1 {
+.google_container h1 {
     font-size: 32px;
     text-align: center;
 }
@@ -102,3 +102,11 @@
     left: 70px;
 }
 
+.dadosUser{
+    justify-content: center;
+    display: block;
+}
+
+.button_login{
+    width: 40px;
+}
