@@ -6,8 +6,10 @@ import onda from "../img/Rectangle 7.svg"
 import ondablue from "../img/Rectangle 11.svg"
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 function Login(){
+    const navigate = useNavigate();
     return(
         <div className={styles.login_container}>
             <img src = {ondablue} className={styles.ondablue}></img>
@@ -22,7 +24,7 @@ function Login(){
                     <GoogleLogin
                         onSuccess={credentialResponse => {
                             const decoded = jwtDecode(credentialResponse.credential);
-                            console.log(decoded);
+                            navigate("/");
                         }}
                         onError={() => {
                             console.log('Login Failed');
