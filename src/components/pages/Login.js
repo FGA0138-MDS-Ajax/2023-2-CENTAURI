@@ -11,6 +11,7 @@ import { toast, ToastContainer } from "react-toastify";
 import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import Grid from "../Grid.js"
+
 import Form from "../Form.js";
 
 function Login() {
@@ -42,6 +43,11 @@ function Login() {
                 <img src={logo} className={styles.logo} alt="logotipo"></img>
                 <img src={menino} className={styles.Menino} alt="menino"></img>
                 <h1 className={styles.bv}>Bem vindos ao UnBuscas</h1>
+                <div className="teste">
+                    <button>
+                        <a href="http://localhost:8800/auth/google/callback" >Login with Google</a>
+                    </button>
+                </div>
                 <div className={styles.google_container}>
                     <h1>Entre na sua conta</h1>
 
