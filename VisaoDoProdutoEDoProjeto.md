@@ -2,7 +2,7 @@
 ### 1.1 PROBLEMA
 Qual é uma das principais dificuldades enfrentadas pelos alunos da Universidade de Brasília que pode impactar negativamente suas oportunidades, relacionada à dificuldade de encontrar documentos importantes e de interesse devido à demora na busca, documentos espalhados ou desatualizados?
 ### 1.2 DECLARAÇÃO DE POSIÇÃO DO PRODUTO
-1.       Qual é o produto que o grupo se propõe a desenvolver?
+1. Qual é o produto que o grupo se propõe a desenvolver?
 É um motor de pesquisa, com o principal objetivo buscar documentos oficiais da Universidade de Brasília de uma maneira rápida e com eles centralizados, para facilitar o usuário encontrar o que deseja.
 Papel | Atribuições | Responsável
 ---|---|---|
@@ -51,13 +51,73 @@ Falta de conhecimento para trabalhar US|Alto|• Divisão de conhecimentos <br> 
 ## 3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE
 <strong>ScrumXP:</strong> O ScrumXP combina as metodologias Scrum e Extreme Programming(XP). Scrum é uma abordagem ágil de desenvolvimento de software que enfatiza a entrega em ciclos curtos de tempo, chamados de sprints. Valoriza também a colaboração e trabalho em equipe a partir de times que conseguem ser auto-organizáveis e adaptáveis. O XP (extreme programming) é uma metodologia com foco em agilidade de equipes e qualidade de projetos, apoiada em valores como simplicidade, comunicação, feedback e coragem. O XP é uma metodologia baseada em comportamentos e atitudes.
 <strong>Scrum:</strong>
+
 #### Cerimônias do Scrum:
 
-Sprint|É um período predefinido em que uma equipe trabalhará para atingir um objetivo específico.
+Cerimônas|O que é
 ---|---|
+Sprint|É um período predefinido em que uma equipe trabalhará para atingir um objetivo específico.
 Sprint Planning|É uma reunião onde toda a equipe trabalha em conjunto para identificar o objetivo da sprint e definir o objetivo e o planejamento da sprint.
+Daily|Na Daily, todos os dias do sprint, a equipe de desenvolvimento se reúne para revisar o progresso na sprint.
+Retrospectiva da sprint|A retrospectiva é uma reunião onde a equipe analisa o que deu certo e onde há espaço para melhorias durante uma retrospectiva do sprint
 
+#### Práticas Utilizadas do XP:
 
+Práticas|O que é
+---|---|
+Refatoração|Realizaremos manutenções periódicas no código, a fim de melhorar o design e a estrutura do código.
+Projeto Simples|Implementaremos o Projeto simples, significando que o código será eficiente, e atenderá aos requisitos e que seja fácil de testar, refatorar e adicionar novas funcionalidades.
+Integração Contínua|O código irá ser frequentemente integrado (versionado) ajudando tanto na questão da transparência como no aumento da segurança do código a partir do controle de versões, evitando perda do código por modificações.
+Posse Coletiva|A equipe passa a ser responsável por cada arquivo de código, não sendo necessário solicitar autorização para fazer alterações.
+Padronização de código|Para que o desenvolvimento do código seja bem definido, consistente e de fácil leitura e interpretação Utilizaremos padrões de código. Essa prática melhora a qualidade geral do código produzido.
+Small Releases (Pequenas versões)|Permite entregar o valor de forma incremental e iterativa.
+Testes Unitários|Adotaremos os testes unitários a fim de garantir a qualidade do código e a sua aderência aos requisitos.
 
-
+## 4 DETALHAMENTO DE ATIVIDADE DO PROJETO
+### 4.1 ATIVIDADE 1
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Criação do Protótipo de Baixa Fidelidade|...|Figma|25/09/2023
+### 4.2 ATIVIDADE 2
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Levantamento de Issues e US|...|Google docs|25/09/2023
+### 4.3 ATIVIDADE 3
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Levantamento de requisitos|...|Google docs|25/09/2023
+### 4.4 ATIVIDADE 4
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Definição de ferramentas|...|Teams|25/09/2023
+### 4.5 ATIVIDADE 5
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Protótipo de alta fidelidade|...|Figma|02/10/2023
+### 4.6 ATIVIDADE 6
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Organizar o repositório da disciplina|...|Github|09/10/2023
+### 4.7 ATIVIDADE 7
+Atividade|Método|Ferramenta|Entrega
+---|---|---|---|
+Sugestão de busca|...|a decidir|06/11/2023
+## 5. LIÇÕES APRENDIDAS
+### 5.1 UNIDADE 1
+<p>Durante a unidade 1, as atitudes tomadas, levando em consenso com a opinião da maioria do grupo, consistiram em separar os melhores frameworks para lidar com a nossa proposta de projeto, seja na parte do back-end, como na do front-end, também prestando atenção no nível de conhecimento da maioria das pessoas, e suas disponibilidades de poder aprender elementos novos.<br></p>
+<p>Sendo assim, conseguimos concluir que fazer um back-end em rust, utilizando o MeilliSearch, MeilliSearch - SDK,  Actix-web e Actix-rt.
+Por fim, tivemos a escolha do front o qual seria feito através do React junto a CSS, JavaScript e html.<br></p>
+<p>No começo do projeto, nosso objetivo era focar em fazer o motor de busca, e uma interface bem simples, então tomamos essa decisão - sobre quais ferramentas iríamos utilizar - visando a isso.<br></p>
+<p>Em relação aos ciclos de vida de um produto, foi nos apresentado dois: o Scrum e o XP. Ambos são metodologias ágeis que acreditamos beneficiar nosso projeto. Portanto, a metodologia dele será ScrumXP com Kanban.<br></p>
+## 6. PRÓXIMOS PASSOS
+### 6.1 PRODUCT BACKLOG
+#### 6.1.1 Requisitos funcionais 
+- Login por meio da autenticação do Google 
+- Possibilidade de favoritar documentos 
+#### 6.1.2 Requisitos não funcionais
+- Edição de conta do usuário  
+- Login por email 
+- Filtrar dados da pesquisa
+### 6.2 SPRINT E RELEASES.
+#### 6.2.1
 
