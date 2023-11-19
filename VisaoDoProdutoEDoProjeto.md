@@ -4,6 +4,9 @@ Qual é uma das principais dificuldades enfrentadas pelos alunos da Universidade
 ### 1.2 DECLARAÇÃO DE POSIÇÃO DO PRODUTO
 1. Qual é o produto que o grupo se propõe a desenvolver?
 É um motor de pesquisa, com o principal objetivo buscar documentos oficiais da Universidade de Brasília de uma maneira rápida e com eles centralizados, para facilitar o usuário encontrar o que deseja.
+
+## 2.VISÃO GERAL DO PROJETO
+### 2.2 ORGANIZAÇÃO DO PROJETO
 Papel | Atribuições | Responsável
 ---|---|---|
 Desenvolvedor do Frontend| Codificar e arrumar o front, bem como documenta-lo e fazer os testes unitário necessários.|Danielle <br> Felipe <br> Renan 
