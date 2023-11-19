@@ -26,26 +26,44 @@ function Home(){
     };
     return(
         <div className={styles.home_container}>
-            <button className = {styles.botaoLogin}>LOGIN</button>
-            <img src = {logo} className={styles.logo} alt="logo"></img>
-            {/* <form className={styles.search_bar}>
-                <input type="text" placeholder="Faça sua pesquisa"/>
-                <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="botão de pesquisar"></img></button>
-            </form> */}
-            <div className = {styles.h}>
-                <h1>Confira mais sobre o Projeto</h1>
-                <button type="submit"><img src={botaoPlus} alt="botão de conferir mais"></img></button>               
+            <div className={styles.button_login_container}>
+                <div>
+                    <button  className = {styles.botaoLogin}>LOGIN</button>
+                </div>
             </div>
-            <div>  
-                <img src={onda} className={styles.onda} alt="onda"></img>
-                <img src={fundo} className={styles.fundo} alt="fundo da página inicial"></img>
-                <img src = {menina} className={styles.menina} alt="menina"></img>
-                <h1 className={styles.titulo}>Sobre o UnBuscas</h1>
-                <p className={styles.texto}>Um recurso de pesquisa rápida<br />
-                    feita por estudantes da UnB<br />
-                    para os próprios estudantes da UnB</p>
-                <p className={styles.texto2}>A plataforma web UnBuscas tem como seu principal<br /> 
-                    objetivo buscar documentos da UnB de forma rápida e eficiente</p>
+            <div className={styles.body}>
+                <div className={styles.logo_container}>
+                    <img src = {logo} className={styles.logo} alt="logo"></img>
+
+                </div>
+                <div>
+                    <form className={styles.search_bar}>
+                        <input type="text" placeholder="Faça sua pesquisa"/>
+                        <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="botão de pesquisar"></img></button>
+                    </form>
+                </div>
+                <div className = {styles.descricao_container}>
+                    <div>
+                        <h1>Confira mais sobre o Projeto</h1>
+                    </div>
+                    <div>
+                        <button type="submit"><img src={botaoPlus} alt="botão de conferir mais"></img></button>               
+                    </div>
+                </div>
+                <div className={styles.sobreUnBusca_container}>
+                        <div>
+                                <h1 className={styles.titulo}>Sobre o UnBuscas</h1>
+                                <p className={styles.texto}>Um recurso de pesquisa rápida<br />
+                                    feita por estudantes da UnB<br />
+                                    para os próprios estudantes da UnB</p>
+                                <p className={styles.texto2}>A plataforma web UnBuscas tem como seu principal<br /> 
+                                    objetivo buscar documentos da UnB de forma rápida e eficiente</p>
+                        </div>
+                        <div className={styles.menina_container}>
+                            <img src = {menina} className={styles.menina} alt="menina"></img>
+                        </div>
+                    
+                </div>
             </div>
         </div>
     )
