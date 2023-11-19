@@ -187,7 +187,7 @@ function Pesquisa() {
             <div className={styles.documentInfo}>
               <h3 className={styles.titulo}>{resource.title}</h3>
               <p>{resource.content.substring(0, 400)}...</p>
-              <a href={resource.link}>Baixe aqui o documento</a><br />
+              
             </div>
           </div>
         ))}
