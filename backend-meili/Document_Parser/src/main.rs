@@ -1,9 +1,10 @@
 use chrono::Datelike;
-use lazy_regex::regex;
+use fancy_regex::Regex;
 use serde_derive::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashSet;
 use std::error::Error;
+use std::io::Write;
 use std::path::Path;
 use std::process::Command;
 use std::result::Result;
@@ -17,6 +18,7 @@ struct Entry {
     date: Option<i64>,
     content: String,
     link: String,
+    is_normative: i32,
 }
 
 /// Represents an array of document entries, with macros to both read and write to a JSON file.
@@ -85,7 +87,7 @@ fn return_date(formatted_text: &str) -> Option<i64> {
 /// to a Hash-Set of Already Processed Titles, optionally returning a Title string and a 64-bit
 /// integer with the Date as Unix Epoch. It is guaranteed to return a boolean that tells if a given
 /// entry is a duplicate. Upon finding a duplicate, this function will print a warning on the
-/// terminal output, and will return no date, no title and a True value for the is_duplicate
+/// terminal output, and will return no date, no title and a True value for the `is_duplicate`
 /// boolean.
 #[allow(clippy::unnecessary_wraps)]
 fn return_parameters(
@@ -134,11 +136,13 @@ fn extract_portuguese_date(line: &str) -> Option<i64> {
     ];
 
     // Regular expression to match the Portuguese date format
-    let re = regex!(r"(\d{1,2})\s*de\s*([^\d\s]+)\s*de\s*(\d{2,4})");
+    let re = Regex::new(r"(\d{1,2})\s*de\s*([^\d\s]+)\s*de\s*(\d{2,4})")
+        .expect("Invalid Regular Expression for Portuguese Date.");
 
-    if let Some(captures) = re.captures(line) {
+    if let Ok(Some(captures)) = re.captures(line) {
         let day: u32 = captures.get(1)?.as_str().parse::<u32>().ok()?;
         let month_str = captures.get(2)?.as_str().to_lowercase();
+        let year_str = captures.get(3)?.as_str();
 
         // Convert the Portuguese month name to a numeric month
         let month: Option<u32> = month_names
@@ -147,8 +151,21 @@ fn extract_portuguese_date(line: &str) -> Option<i64> {
             .and_then(|idx| idx.try_into().ok());
 
         if let Some(month) = month {
-            // Hardcode the year as 1960
-            let year: i32 = 1960;
+            // Determine the year format (2 or 4 digits)
+            let year: i32 = if year_str.len() == 2 {
+                let current_year = chrono::Local::now().year() % 100; // Get the current two-digit year
+                let year: i32 = year_str.parse::<i32>().ok()?;
+                if year <= current_year {
+                    // If the year is less than or equal to the current two-digit year, assume it's in the current
+                    // century
+                    2000 + year
+                } else {
+                    // Otherwise, assume it's in the previous century
+                    1900 + year
+                }
+            } else {
+                year_str.parse::<i32>().ok()?
+            };
 
             let date: chrono::NaiveDate = chrono::NaiveDate::from_ymd_opt(year, month, day)?;
             return Some(date.and_hms_opt(0, 0, 0)?.timestamp());
@@ -158,14 +175,14 @@ fn extract_portuguese_date(line: &str) -> Option<i64> {
     None
 }
 
-/// This function is run if [extract_portuguese_date] returns nothing. It takes a reference to a
+/// This function is run if [`extract_portuguese_date`] returns nothing. It takes a reference to a
 /// Line of text and returns a 64-bit integer with Date as Unix Epoch. The regex engine looks for
 /// any slash separated date, ranging from 4 digits up to 8, i.e., from 2/9/23 to 02/09/2023.
 fn extract_date(line: &str) -> Option<i64> {
-    let re = regex!(r"(\d{1,2})/(\d{1,2})/(\d{2,4})");
+    let re = Regex::new(r"(\d{1,2})/(\d{1,2})/(\d{2,4})").expect("Invalid Regular Expression for Date.");
     let captures = re.captures(line);
 
-    if let Some(captures) = captures {
+    if let Ok(Some(captures)) = captures {
         let day: u32 = captures.get(1)?.as_str().parse::<u32>().ok()?;
         let month: u32 = captures.get(2)?.as_str().parse::<u32>().ok()?;
         let year_str = captures.get(3)?.as_str();
@@ -237,6 +254,27 @@ fn extract_text(path: &Path) -> Result<String, Box<dyn Error>> {
     }
 }
 
+/// This function takes a reference to a prompt string and returns a 32 bit integer (can be 1, 2 or
+/// 3 only) to be used globally for all entries currently being evaluated and read from in the IN
+/// folder. It loops and prompts for yes or no until a valid response is matched.
+fn prompt_normative(prompt: &str) -> i32 {
+    loop {
+        print!("{prompt}");
+        io::stdout().flush().expect("Failed to flush stdout");
+
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+
+        let trimmed = input.trim().to_lowercase();
+        match trimmed.as_str() {
+            "1" => return 1,
+            "2" => return 2,
+            "3" => return 3,
+            _ => println!("Please enter a valid number. [1, 2, 3]"),
+        }
+    }
+}
+
 /// The main entry point of the program.
 ///
 /// This function is responsible for processing PDF files in the 'in' folder, extracting relevant
@@ -277,6 +315,10 @@ fn main() -> Result<(), Box<dyn Error>> {
             entries.push(entry);
         }
     }
+    // Prompt the user for the global is_normative switch
+    let is_normative = prompt_normative(
+        "Choose one of the following for all documents in the IN folder:\n1 - Normative\n2 - Deliberative\n3 - Unspecified\n",
+    );
 
     for entry in fs::read_dir(in_folder)? {
         let entry = entry?;
@@ -314,6 +356,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                             date,
                             content: text,
                             link,
+                            is_normative,
                         };
 
                         entries.push(entry);

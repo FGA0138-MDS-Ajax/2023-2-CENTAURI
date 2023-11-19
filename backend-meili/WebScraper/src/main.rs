@@ -1,6 +1,7 @@
 use scraper::{Html, Selector};
 use std::fs;
 
+#[allow(clippy::doc_markdown)]
 /// Main function to process HTML files in the current directory and extract links
 /// that start with "https://sig.unb.br/sigrh/downloadArquivo?idArquivo=".
 ///
@@ -10,8 +11,9 @@ use std::fs;
 /// 2. Reads the directory entries.
 /// 3. Parses HTML files in the directory, looking for 'a' elements.
 /// 4. Filters and prints links that match a specific criteria.
-/// 
-/// The program is supposed to be ran from the terminal and piped into a file or another program or script.
+///
+/// The program is supposed to be run from the terminal and piped into a file or another program or
+/// script.
 ///
 /// # Errors
 ///
@@ -51,7 +53,7 @@ fn main() {
                 html.select(&selector).for_each(|element| {
                     if let Some(href) = element.value().attr("href") {
                         if href.starts_with("https://sig.unb.br/sigrh/downloadArquivo?idArquivo=") {
-                            println!("{}", href);
+                            println!("{href}");
                         }
                     }
                 });
