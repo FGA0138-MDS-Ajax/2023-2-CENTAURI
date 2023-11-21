@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  }
+
+.imagem{
+    position: absolute;
+    top: 0px;
+    width:3000px;
+    z-index: 1;
+}
+
+.search_bar{
+    top: 7%;
+    left: 30%;
+    width: 729px;
+    height: 40.769px;
+    background: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    padding: 5px 20px;
+    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    color: black;
+    position: absolute;
+    z-index: 2;
+}
+
+.search_bar input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: black;
+    box-shadow: #929292;
+    z-index: 1;
+}
+
+.search_bar button img{
+    width: 25px;
+    z-index: 1;
+}
+
+.search_bar button{
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 44px;
+    background: #A7A3FF;
+    z-index: 1;
+}
+.search_bar button:hover{
+    cursor: pointer;
+}
+
+::placeholder{
+    color: #929292;
+    font-family: Poppins, serif;
+    font-size: 25px;
+    top: 60px;
+}
+
+.sair{
+    font-size: 20px;
+    left: 93%;
+    top: 4%;
+    font-family: Poppins, sans-serif;
+    position: absolute;
+    z-index: 2;
+}
+
+.retangulo {
+    position: absolute;
+    width: 1367px;
+    height: 309px;
+    top: 400px;
+    left: 270px;
+}
+
+.retanguloBranco{
+    position: absolute;
+    width: 536px;
+    height: 106px;
+    top: 550px;
+    left: 370px;
+}
+
+.menina{
+    position: absolute;
+    top: 260px;
+    left: 1200px;
+}
+
+.estrela{
+    position: absolute;
+    top: 850px;
+    left: 910px;
+}
+
+.onda{
+    top: 63%;
+    left: 0%;
+    position: absolute;
+    width: 14540px;
+    height: 1043.74px;
+}
+
+.ola{
+    position: absolute;
+    top: 435px;
+    left: 370px;
+    font-family: Poppins, serif;
+    font-size: 50px; 
+}
+
+.nome{
+    position: absolute;
+    top: 570px;
+    left: 400px;
+    font-family: Poppins, serif;
+}
+
+.email{
+    position: absolute;
+    top: 610px;
+    left: 400px;
+    font-family: Poppins, serif;
+}
