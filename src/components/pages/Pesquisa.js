@@ -8,6 +8,9 @@ import unb from "../img/pdf1.svg";
 import bolinhas from "../img/bolinhas.svg";
 import download from "../img/Download.svg"
 import coracao from "../img/Coracao.svg"
+import login from "../img/Login.svg"
+import lupa from "../img/lupa.svg"
+import onda2 from "../img/Rectangle 22.svg"
 
 function Pesquisa() {
   const [searchResults, setSearchResults] = useState([]);
@@ -116,8 +119,13 @@ function Pesquisa() {
     <div className={styles.search_container}>
       <div>
         <img src={onda} className={styles.onda} alt="onda"></img>
+        <img src={onda2} className={styles.onda2} alt="onda"></img>
         <img src={logo} className={styles.logo} alt="logo"></img>
         <img src={filtro} className={styles.filtro} alt="filtro" onClick={handleToggleFilters}></img>
+        <div>
+        <img src={login} className={styles.login} alt="login"></img>
+        <p className={styles.profile}>Your username</p>
+        </div>
       </div>
 
       <form className={styles.search_bar}>
@@ -126,6 +134,7 @@ function Pesquisa() {
           placeholder="Pesquise um documento aqui"
           onChange={(e) => searchDocuments(e.target.value)}
         />
+         <button type="submit" className={styles.botaoPesquisa}><img src={lupa} alt="botão de pesquisar"></img></button>
       </form>
 
       {filtersVisible && (
@@ -152,13 +161,13 @@ function Pesquisa() {
               )}
             </div>
 
-            <div className={styles.todos1}>
+            {/* <div className={styles.todos1}>
               <select className={styles.todos} value={selectedType} onChange={(e) => handleTypeChange(e.target.value)}>
                 <option value="">Todos</option>
                 <option value="Normativo">Normativo</option>
                 <option value="Deliberativo">Deliberativo</option>
               </select>
-            </div>
+              </div> */}
           </div>
         </div>
       )}

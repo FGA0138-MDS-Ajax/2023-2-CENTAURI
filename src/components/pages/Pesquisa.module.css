@@ -67,6 +67,19 @@
     cursor: pointer;
 }
 
+.login{
+    right: 15%;
+    position: absolute;
+}
+
+.profile{
+    font-family: Poppins, serif;
+    font-size: 20px;
+    right: 5%;
+    position: absolute;
+    top: 4%;
+}
+
 .h{
     position: absolute;
     top:650px;
@@ -96,7 +109,7 @@
     max-width: 800px;
     position: absolute;
     top: 40%;
-    left: 30%;
+    left: 3%;
   }
   
   .documentContainer {
@@ -173,6 +186,14 @@
     
   }
 
+.onda2 {
+    left: 0%;
+    top: 15%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    
+}
 .logo {
     width: 200px;
     height: 80px;
@@ -188,11 +209,13 @@
     height: 54.177px;
     flex-shrink: 0;
     position: absolute;
+    cursor: pointer;
 }
 
 .sortingFilteringControls{
     position: absolute;
     top: 20%;
+    left: 8%;
 
 }
 
@@ -211,19 +234,26 @@
     background: #F2F4F5;
 }
 
+.periodDropdown{
+    position: absolute;
+    left: 200%;
+    top: -10%;
+}
+
 .periodo{
     font-family: Poppins, serif;
     display: flex;
     /* justify-content: flex-start; */
-    left: 0%;
+    left: 100%;
 }
 
 .relevance{
     font-family: Poppins, serif;
+    
     display: flex;
-    left: 300%;
+    left: 10%;
     /* justify-content: flex-start; */
-    padding-right: 20px;
+   
     text-align: center;
     
     
@@ -246,6 +276,24 @@
     display: flex;
     left: 400%;
    
+}
+
+.search_bar button img{
+    width: 45px;
+}
+
+.search_bar button{
+    position: relative;
+    top: 5%;
+    right: 1%;
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: #A7A3FF;
+}
+.search_bar button:hover{
+    cursor: pointer;
 }
 
 @media (max-width: 700px) {
