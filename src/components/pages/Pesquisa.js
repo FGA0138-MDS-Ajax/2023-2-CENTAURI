@@ -152,10 +152,10 @@ function Pesquisa() {
               </button>
               {periodDropdownOpen && (
                 <div className={styles.periodDropdownContent}>
-                  <label>Start Date:</label>
+                  <label>Data Inicio:</label>
                   <input type="date" value={startDate} onChange={(e) => handleStartDateChange(e.target.value)} />
 
-                  <label>End Date:</label>
+                  <label>Data Final:</label>
                   <input type="date" value={endDate} onChange={(e) => handleEndDateChange(e.target.value)} />
                 </div>
               )}
