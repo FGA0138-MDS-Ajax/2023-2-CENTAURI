@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["index","main","query_meilisearch","search","transform_results"],"struct":["PDFdoc","SearchQueryWrapper","SearchResults"]};
+window.SIDEBAR_ITEMS = {"fn":["index","main","query_meilisearch","search","serialize_search_results"],"struct":["PDFdoc","SearchQueryWrapper","SearchResponse"]};
