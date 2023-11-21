@@ -1,6 +1,8 @@
 ## 2 BACKLOG DO PRODUTO
 Forneça o backlog do produto, constituído pelos requisitos a serem contemplados no desenvolvimento:
-·        Forma de obtenção do requisito (elicitação): brainstorm, reuniões.
+
+·Forma de obtenção do requisito (elicitação): brainstorm, reuniões.
+
 ### 2.1 PERFIS
 #|Nome do perfil|Características do perfil|Pemissões de acesso
 ---|---|---|---|
