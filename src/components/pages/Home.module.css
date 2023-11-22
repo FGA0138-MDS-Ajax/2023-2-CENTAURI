@@ -1,36 +1,34 @@
 @font-face {
     font-family: 'Poppins';
     src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
-  }
+}
 
 *{
     max-width: 100%;
     margin: 0 auto; 
-
 }
 
 .home_container{
-    width: 90%;
     min-height: 100vh;
-    padding: 5%;
     background-position: center;
     background-size: cover;
     background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
+    display: flexbox;
+}
+
+.body{
+    display: inline;
     justify-content: center;
 }
 
 .search_bar{
     
-    top: 400px;
-    width: 792px;
-    height: 46px;
+    width: 50%;
+    margin-bottom: 10%;
     background: #FAFAFA;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     border-radius: 60px;
     padding: 10px 20px;
     box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
@@ -70,24 +68,28 @@
     cursor: pointer;
 }
 
-.logo {
-    position: absolute;
-    left:800px;
-    top:300px;
+
+.logo_container{
+    margin-top: 200px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 
-.h{
-    position: absolute;
-    top:650px;
-    left:700px;
+.descricao_container{
+    margin-top: 300px;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
     font-family: Poppins, serif;
     font-size: 20px;
     
 }
+.descricao_container>div {
+    display: flex;
+}
 
 .h button{
-    position: absolute;
-    left:200px;
     border-radius: 50px;
     background-color: #918BFF;
     width: 60px;
@@ -99,12 +101,28 @@
     
 }
 
+.button_login_container{
+    display: flex;
+    
+    justify-content: flex-end;
+    margin-top: 4%;
+    
+}
+
+.button_login_container>div{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .botaoLogin{
-    position: absolute;
     top:50px;
-    left:1700px;
+    right: 150px;
     width: 140px;
     height: 30px;
+    position: absolute;
+    /* display: flexbox; */
+    justify-content: right;
+    /* align-items: center; */
     background-color: #00305b;
     color: #FFFFFF;
     font-family: Poppins, serif;
@@ -117,46 +135,87 @@
     cursor: pointer;
 }
 
-.onda{
-    left: 0px;
-    top: 200px;
-    position: absolute;
-    width: 2000px;
-    height: 2435px;
+
+
+.sobreUnBusca_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/Rectangle9.svg);
+    background-position-x: center;
+    width: 100%;
+    height: 78vh;
+    max-height: 800px;
+}
+.sobreUnBusca_container>div {
+    display: flexbox;
+}
+
+
+
+.menina_container {
+    display: flex;
+    margin-top: -100px;
+    justify-content: flex-start;
 }
 
 .menina{
-    position: absolute;
-    left: 1200px;
-    top: 1000px;
-}
-
-.fundo{
-    position: absolute;
-    left: 1100px;
-    top: 1100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .titulo{
-    position: absolute;
-    left: 200px;
-    top: 1200px;
-    font-family: Poppins, serif;
-    font-size: 50px;   
-}
-
-.texto{
-    position: absolute;
-    left: 200px;
-    top: 1350px;
+    padding-left: 20px;
     font-family: Poppins, serif;
     font-size: 40px;   
 }
 
-.texto2{
-    position: absolute;
-    left: 200px;
-    top: 1600px;
+.texto{
+    padding-left: 20px;
     font-family: Poppins, serif;
     font-size: 30px;   
+}
+
+.texto2{
+    padding-left: 20px;
+    font-family: Poppins, serif;
+    font-size: 20px;   
+}
+
+@media (max-width: 560px) {
+    .sobreUnBusca_container {
+        display: inline-block;
+        background-image: url(../img/Rectangle9.svg);
+        background-position-x: center;
+        width: 2000px;
+        height: 2100px;
+        padding-top: 100px;
+    }
+    .botao_login {
+        display: flex;
+        justify-content: center;
+    }
+    .search_bar {
+        width: min-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 10px 0px 10px;
+    }
+    .descricao_container{
+        font-size: 20px;
+        text-align: center;
+        padding: 0px 20px 0px 20px;
+    }
+    .titulo{
+        font-size: 30px;
+    }
+    .texto{
+        font-size: 20px;
+    }
+    .texto2{
+        font-size: 15px;
+    }
+    
 }
