@@ -4,7 +4,7 @@ import retangulo from "../img/RetanguloUsuario.svg"
 import retanguloBranco from "../img/RetanguloUsuarioB.svg"
 import menina from "../img/meninaUsuario.svg"
 import estrela from "../img/estrela.svg"
-import onda from "../img/Rectangle 23.svg"
+import onda from "../img/Rectangle23.svg"
 import botaoPesquisa from '../img/botaoPesquisa.svg'
 
 function Usuario(){
@@ -24,9 +24,9 @@ function Usuario(){
         <p className={styles.nome}>Nome:</p>
         <p className={styles.email}>Email:</p>
         <img src = {menina} className={styles.menina}></img>
-        <img src = {onda} className={styles.onda}></img>
-        <img src = {estrela} className = {styles.estrela}></img>
-
+      <img src = {onda} className={styles.onda}></img>
+        <div className={styles.onda}><img src = {estrela} className = {styles.estrela}></img>
+        </div>
         </div>
         </div>
 
