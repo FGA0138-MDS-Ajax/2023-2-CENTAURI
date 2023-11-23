@@ -12,7 +12,7 @@
 .search_container{
     width: 80%;
     min-height: 100vh;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
     background-position: center;
     background-size: cover;
     background-color: #FFFFFF;
@@ -22,13 +22,14 @@
 }
 
 .search_bar{
-    width: 792px;
+    width: 50%;
     height: 46px;
+    margin-top: 30px;
     margin-bottom: 20px;
     background: #FAFAFA;
     display: flex;
     border-radius: 60px;
-    padding: 10px 20px;
+    padding: 0px 20px;
     box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
     color: black;
 }
@@ -66,6 +67,19 @@
     cursor: pointer;
 }
 
+.login{
+    right: 15%;
+    position: absolute;
+}
+
+.profile{
+    font-family: Poppins, serif;
+    font-size: 20px;
+    right: 5%;
+    position: absolute;
+    top: 4%;
+}
+
 .h{
     position: absolute;
     top:650px;
@@ -90,9 +104,199 @@
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    position: absolute;
+    top: 40%;
+    left: 3%;
+  }
+  
+  .documentContainer {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .documentImage {
+    width: 200px; 
+    height: 200px; 
+    margin-right: 10px;
+  }
+  
+  .documentInfo {
+    flex: 1;
+  }
+  
+  .titulo {
+    font-size: 1.5rem;
+    margin-bottom: 5px; 
+  }
+
+.bolinha{
+    top: 0%;
+    margin-top: -25%;
+    cursor: pointer;
+}
+.bolinhaMenu {
+    position: absolute;
+    background-color: #F0EFFF;
+    border-radius: 7px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+  }
+
+.downloadAll{
+    cursor: pointer;
+}
+
+.dowloadIcon{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.downloadText{
+    font-family: Poppins, serif;
+    display: inline;
+    position: absolute;
+    top: 10px;
+    margin-left: 10px;
+}
+
+.coracao{
+    margin-top: 10px;
+    
+}
+
+.coracaoText{
+    font-family: Poppins, serif;
+    display: inline;
+    margin-left: 10px;
+    
+}
+  
+.onda {
+    left: 0%;
+    top: -5%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    
+  }
+
+.onda2 {
+    left: 0%;
+    top: 15%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    
+}
+.logo {
+    width: 200px;
+    height: 80px;
+    left: 2%;
+    position: absolute;
+
+}
+
+.filtro{
+    top: 18%;
+    left: 49%;
+    width: 54.177px;
+    height: 54.177px;
+    flex-shrink: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.sortingFilteringControls{
+    position: absolute;
+    top: 20%;
+    left: 8%;
+
+}
+
+.sortingFilteringControls option{
+    border-radius: 36px;
+    background: #F2F4F5;
+}
+
+.sortingFilteringControls select{
+    border-radius: 36px;
+    background: #F2F4F5;
+}
+
+.periodDropdown button{
+    border-radius: 36px;
+    background: #F2F4F5;
+}
+
+.periodDropdown{
+    position: absolute;
+    left: 200%;
+    top: -10%;
+}
+
+.periodo{
+    font-family: Poppins, serif;
+    display: flex;
+    /* justify-content: flex-start; */
+    left: 100%;
+}
+
+.relevance{
+    font-family: Poppins, serif;
+    
+    display: flex;
+    left: 10%;
+    /* justify-content: flex-start; */
+   
+    text-align: center;
+    
+    
+}
+.relevance>option{
+    display: flex;
+    justify-content: space-between;
+}
+
+.todos{
+    font-family: Poppins, serif;
+    left: 400%;
+    display: flex;
+    /* justify-content: flex-start; */
+    
+    
+}
+
+.todos1{
+    display: flex;
+    left: 400%;
+   
+}
+
+.search_bar button img{
+    width: 45px;
+}
+
+.search_bar button{
+    position: relative;
+    top: 5%;
+    right: 1%;
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: #A7A3FF;
+}
+.search_bar button:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+
+
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Document_Parser/src/main.rs`."><title>main.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="document_parser" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (8ce4540bd 2023-09-29)" data-channel="nightly" data-search-js="search-8be46b629f5f14a8.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../document_parser/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Document_Parser/src/main.rs`."><title>main.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fa3bb1812debf86c.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="document_parser" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0-nightly (960754090 2023-10-06)" data-channel="nightly" data-search-js="search-5f5ec5419eadd0c9.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-c5bd66d33317d69f.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../document_parser/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -354,12 +354,56 @@
 <a href="#354" id="354">354</a>
 <a href="#355" id="355">355</a>
 <a href="#356" id="356">356</a>
+<a href="#357" id="357">357</a>
+<a href="#358" id="358">358</a>
+<a href="#359" id="359">359</a>
+<a href="#360" id="360">360</a>
+<a href="#361" id="361">361</a>
+<a href="#362" id="362">362</a>
+<a href="#363" id="363">363</a>
+<a href="#364" id="364">364</a>
+<a href="#365" id="365">365</a>
+<a href="#366" id="366">366</a>
+<a href="#367" id="367">367</a>
+<a href="#368" id="368">368</a>
+<a href="#369" id="369">369</a>
+<a href="#370" id="370">370</a>
+<a href="#371" id="371">371</a>
+<a href="#372" id="372">372</a>
+<a href="#373" id="373">373</a>
+<a href="#374" id="374">374</a>
+<a href="#375" id="375">375</a>
+<a href="#376" id="376">376</a>
+<a href="#377" id="377">377</a>
+<a href="#378" id="378">378</a>
+<a href="#379" id="379">379</a>
+<a href="#380" id="380">380</a>
+<a href="#381" id="381">381</a>
+<a href="#382" id="382">382</a>
+<a href="#383" id="383">383</a>
+<a href="#384" id="384">384</a>
+<a href="#385" id="385">385</a>
+<a href="#386" id="386">386</a>
+<a href="#387" id="387">387</a>
+<a href="#388" id="388">388</a>
+<a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a>
+<a href="#398" id="398">398</a>
+<a href="#399" id="399">399</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>chrono::Datelike;
-<span class="kw">use </span>lazy_regex::regex;
+<span class="kw">use </span>fancy_regex::Regex;
 <span class="kw">use </span>serde_derive::{Deserialize, Serialize};
 <span class="kw">use </span>sha2::{Digest, Sha256};
 <span class="kw">use </span>std::collections::HashSet;
 <span class="kw">use </span>std::error::Error;
+<span class="kw">use </span>std::io::Write;
 <span class="kw">use </span>std::path::Path;
 <span class="kw">use </span>std::process::Command;
 <span class="kw">use </span>std::result::Result;
@@ -373,6 +417,7 @@
     date: <span class="prelude-ty">Option</span>&lt;i64&gt;,
     content: String,
     link: String,
+    is_normative: i32,
 }
 
 <span class="doccomment">/// Represents an array of document entries, with macros to both read and write to a JSON file.
@@ -441,7 +486,7 @@
 /// to a Hash-Set of Already Processed Titles, optionally returning a Title string and a 64-bit
 /// integer with the Date as Unix Epoch. It is guaranteed to return a boolean that tells if a given
 /// entry is a duplicate. Upon finding a duplicate, this function will print a warning on the
-/// terminal output, and will return no date, no title and a True value for the is_duplicate
+/// terminal output, and will return no date, no title and a True value for the `is_duplicate`
 /// boolean.
 </span><span class="attr">#[allow(clippy::unnecessary_wraps)]
 </span><span class="kw">fn </span>return_parameters(
@@ -490,11 +535,13 @@
     ];
 
     <span class="comment">// Regular expression to match the Portuguese date format
-    </span><span class="kw">let </span>re = <span class="macro">regex!</span>(<span class="string">r&quot;(\d{1,2})\s*de\s*([^\d\s]+)\s*de\s*(\d{2,4})&quot;</span>);
+    </span><span class="kw">let </span>re = Regex::new(<span class="string">r&quot;(\d{1,2})\s*de\s*([^\d\s]+)\s*de\s*(\d{2,4})&quot;</span>)
+        .expect(<span class="string">&quot;Invalid Regular Expression for Portuguese Date.&quot;</span>);
 
-    <span class="kw">if let </span><span class="prelude-val">Some</span>(captures) = re.captures(line) {
+    <span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(captures)) = re.captures(line) {
         <span class="kw">let </span>day: u32 = captures.get(<span class="number">1</span>)<span class="question-mark">?</span>.as_str().parse::&lt;u32&gt;().ok()<span class="question-mark">?</span>;
         <span class="kw">let </span>month_str = captures.get(<span class="number">2</span>)<span class="question-mark">?</span>.as_str().to_lowercase();
+        <span class="kw">let </span>year_str = captures.get(<span class="number">3</span>)<span class="question-mark">?</span>.as_str();
 
         <span class="comment">// Convert the Portuguese month name to a numeric month
         </span><span class="kw">let </span>month: <span class="prelude-ty">Option</span>&lt;u32&gt; = month_names
@@ -503,8 +550,21 @@
             .and_then(|idx| idx.try_into().ok());
 
         <span class="kw">if let </span><span class="prelude-val">Some</span>(month) = month {
-            <span class="comment">// Hardcode the year as 1960
-            </span><span class="kw">let </span>year: i32 = <span class="number">1960</span>;
+            <span class="comment">// Determine the year format (2 or 4 digits)
+            </span><span class="kw">let </span>year: i32 = <span class="kw">if </span>year_str.len() == <span class="number">2 </span>{
+                <span class="kw">let </span>current_year = chrono::Local::now().year() % <span class="number">100</span>; <span class="comment">// Get the current two-digit year
+                </span><span class="kw">let </span>year: i32 = year_str.parse::&lt;i32&gt;().ok()<span class="question-mark">?</span>;
+                <span class="kw">if </span>year &lt;= current_year {
+                    <span class="comment">// If the year is less than or equal to the current two-digit year, assume it&#39;s in the current
+                    // century
+                    </span><span class="number">2000 </span>+ year
+                } <span class="kw">else </span>{
+                    <span class="comment">// Otherwise, assume it&#39;s in the previous century
+                    </span><span class="number">1900 </span>+ year
+                }
+            } <span class="kw">else </span>{
+                year_str.parse::&lt;i32&gt;().ok()<span class="question-mark">?
+            </span>};
 
             <span class="kw">let </span>date: chrono::NaiveDate = chrono::NaiveDate::from_ymd_opt(year, month, day)<span class="question-mark">?</span>;
             <span class="kw">return </span><span class="prelude-val">Some</span>(date.and_hms_opt(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)<span class="question-mark">?</span>.timestamp());
@@ -514,14 +574,14 @@
     <span class="prelude-val">None
 </span>}
 
-<span class="doccomment">/// This function is run if [extract_portuguese_date] returns nothing. It takes a reference to a
+<span class="doccomment">/// This function is run if [`extract_portuguese_date`] returns nothing. It takes a reference to a
 /// Line of text and returns a 64-bit integer with Date as Unix Epoch. The regex engine looks for
 /// any slash separated date, ranging from 4 digits up to 8, i.e., from 2/9/23 to 02/09/2023.
 </span><span class="kw">fn </span>extract_date(line: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;i64&gt; {
-    <span class="kw">let </span>re = <span class="macro">regex!</span>(<span class="string">r&quot;(\d{1,2})/(\d{1,2})/(\d{2,4})&quot;</span>);
+    <span class="kw">let </span>re = Regex::new(<span class="string">r&quot;(\d{1,2})/(\d{1,2})/(\d{2,4})&quot;</span>).expect(<span class="string">&quot;Invalid Regular Expression for Date.&quot;</span>);
     <span class="kw">let </span>captures = re.captures(line);
 
-    <span class="kw">if let </span><span class="prelude-val">Some</span>(captures) = captures {
+    <span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(captures)) = captures {
         <span class="kw">let </span>day: u32 = captures.get(<span class="number">1</span>)<span class="question-mark">?</span>.as_str().parse::&lt;u32&gt;().ok()<span class="question-mark">?</span>;
         <span class="kw">let </span>month: u32 = captures.get(<span class="number">2</span>)<span class="question-mark">?</span>.as_str().parse::&lt;u32&gt;().ok()<span class="question-mark">?</span>;
         <span class="kw">let </span>year_str = captures.get(<span class="number">3</span>)<span class="question-mark">?</span>.as_str();
@@ -593,6 +653,27 @@
     }
 }
 
+<span class="doccomment">/// This function takes a reference to a prompt string and returns a 32 bit integer (can be 1, 2 or
+/// 3 only) to be used globally for all entries currently being evaluated and read from in the IN
+/// folder. It loops and prompts for yes or no until a valid response is matched.
+</span><span class="kw">fn </span>prompt_normative(prompt: <span class="kw-2">&amp;</span>str) -&gt; i32 {
+    <span class="kw">loop </span>{
+        <span class="macro">print!</span>(<span class="string">&quot;{prompt}&quot;</span>);
+        io::stdout().flush().expect(<span class="string">&quot;Failed to flush stdout&quot;</span>);
+
+        <span class="kw">let </span><span class="kw-2">mut </span>input = String::new();
+        io::stdin().read_line(<span class="kw-2">&amp;mut </span>input).expect(<span class="string">&quot;Failed to read line&quot;</span>);
+
+        <span class="kw">let </span>trimmed = input.trim().to_lowercase();
+        <span class="kw">match </span>trimmed.as_str() {
+            <span class="string">&quot;1&quot; </span>=&gt; <span class="kw">return </span><span class="number">1</span>,
+            <span class="string">&quot;2&quot; </span>=&gt; <span class="kw">return </span><span class="number">2</span>,
+            <span class="string">&quot;3&quot; </span>=&gt; <span class="kw">return </span><span class="number">3</span>,
+            <span class="kw">_ </span>=&gt; <span class="macro">println!</span>(<span class="string">&quot;Please enter a valid number. [1, 2, 3]&quot;</span>),
+        }
+    }
+}
+
 <span class="doccomment">/// The main entry point of the program.
 ///
 /// This function is responsible for processing PDF files in the &#39;in&#39; folder, extracting relevant
@@ -633,6 +714,10 @@
             entries.push(entry);
         }
     }
+    <span class="comment">// Prompt the user for the global is_normative switch
+    </span><span class="kw">let </span>is_normative = prompt_normative(
+        <span class="string">&quot;Choose one of the following for all documents in the IN folder:\n1 - Normative\n2 - Deliberative\n3 - Unspecified\n&quot;</span>,
+    );
 
     <span class="kw">for </span>entry <span class="kw">in </span>fs::read_dir(in_folder)<span class="question-mark">? </span>{
         <span class="kw">let </span>entry = entry<span class="question-mark">?</span>;
@@ -670,6 +755,7 @@
                             date,
                             content: text,
                             link,
+                            is_normative,
                         };
 
                         entries.push(entry);
