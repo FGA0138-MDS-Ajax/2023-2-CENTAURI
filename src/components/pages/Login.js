@@ -43,31 +43,14 @@ function Login() {
                 <img src={logo} className={styles.logo} alt="logotipo"></img>
                 <img src={menino} className={styles.Menino} alt="menino"></img>
                 <h1 className={styles.bv}>Bem vindos ao UnBuscas</h1>
-                <div className="teste">
-                    <button>
-                        <a href="http://localhost:8800/auth/google/callback" >Login with Google</a>
-                    </button>
-                </div>
+                
                 <div className={styles.google_container}>
-                    <h1>Entre na sua conta</h1>
-
                     <div>
-                        <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
-                        <hr />
-                        <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
-                        <hr />
-                        <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} size="10%" />
+                        <h1>Entre na sua conta</h1>
+                        <button>
+                            <a className="botao_google" href="http://localhost:8800/auth/google/callback" >Login with Google</a>
+                        </button>
                     </div>
-
-                    <GoogleOAuthProvider clientId="829989984645-1n9j5s35r34n85fkj83hjiiisc6jg20e.apps.googleusercontent.com">
-                        <GoogleLogin
-                            onSuccess={(credentialResponse) => {
-                                const decoded = jwtDecode(credentialResponse.credential);
-                                aux = decoded;
-                                console.log(aux);
-                            }}
-                        />
-                    </GoogleOAuthProvider>
                 </div>
             </div>
         </div>

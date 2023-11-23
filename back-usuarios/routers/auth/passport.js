@@ -42,8 +42,8 @@ passport.use(
                     } else {
                         // if user dosen't exist, we are adding the user to database
                         db.query(
-                            "insert into user set token = ?, name = ?, email = ?",
-                            [profile.id, profile.displayName, profile.emails[0].value],
+                            "insert into user set email = ?,  userName = ?, token = ?",
+                            [ profile.emails[0].value, profile.displayName, profile.id,],
                             (err, userAdded) => {
                                 if (err) {
                                     return cb(err, false);
