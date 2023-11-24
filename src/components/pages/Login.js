@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from "./Login.module.css"
 import logo from "../img/logo.svg"
 import menino from "../img/Menino com celular.svg"
@@ -10,6 +11,9 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login(){
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+
     const navigate = useNavigate();
     return(
         <div className={styles.login_container}>
@@ -24,6 +28,7 @@ function Login(){
                     <GoogleOAuthProvider clientId="829989984645-1n9j5s35r34n85fkj83hjiiisc6jg20e.apps.googleusercontent.com">
                     <GoogleLogin
                         onSuccess={credentialResponse => {
+                            setIsLoggedIn(true);
                             const decoded = jwtDecode(credentialResponse.credential);
                             navigate("/");
                         }}
