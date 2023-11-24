@@ -40,9 +40,8 @@ function Login(){
                     </GoogleOAuthProvider>
                 </div>       
         </div>
+    );
+};
 
-      
-    )
-}
 
-export default Login;
+export default Login
