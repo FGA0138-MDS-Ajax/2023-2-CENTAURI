@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from './AuthContext';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
 
