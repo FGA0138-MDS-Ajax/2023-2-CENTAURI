@@ -16,7 +16,7 @@ function App() {
           <Route exact path='/login' element={<Login/>}/>
           <Route exact path='/error' element={<Error/>}/>
           <Route exact path='/pesquisa' element={<Pesquisa/>}/>
-          <Route exact path='/usuario' element={<Usuario/>}/>
+          <Route exact path='/usuario' element={<Usuario />} />
         </Routes>
       </Router>
       </AuthProvider>

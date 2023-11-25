@@ -10,16 +10,18 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(true);
     localStorage.setItem('isLoggedIn', 'true');
     setUser(userData); 
+    localStorage.setItem('user', JSON.stringify(userData));
   };
 
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.setItem('isLoggedIn', 'false');
     setUser(null); 
+    localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, user }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -28,4 +30,3 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-

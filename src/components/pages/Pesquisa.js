@@ -26,7 +26,7 @@ function Pesquisa() {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
-  const { isLoggedIn, logout, user } = useAuth(); 
+  const { isLoggedIn, logout, user, setUser } = useAuth(); 
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
@@ -125,7 +125,15 @@ function Pesquisa() {
   const handleLogout = () => {
     logout();
     localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('user');
   };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, [setUser]);
 
   return (
     <div className={styles.search_container}>
@@ -151,7 +159,7 @@ function Pesquisa() {
         {isLoggedIn && (
           <div>
             <img src={login} className={styles.login} alt="login"></img>
-            <p className={styles.profile}>{user.name}</p>
+            <p className={styles.profile}>{user?.name}</p>
           </div>
         )}
       </div>
