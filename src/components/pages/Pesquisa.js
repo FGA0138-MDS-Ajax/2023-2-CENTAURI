@@ -26,7 +26,7 @@ function Pesquisa() {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, logout, user } = useAuth(); 
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
@@ -151,7 +151,7 @@ function Pesquisa() {
         {isLoggedIn && (
           <div>
             <img src={login} className={styles.login} alt="login"></img>
-            <p className={styles.profile}>Your username</p>
+            <p className={styles.profile}>{user.name}</p>
           </div>
         )}
       </div>
@@ -192,7 +192,7 @@ function Pesquisa() {
         </div>
       )}
 
-<div className={styles.grid}>
+      <div className={styles.grid}>
         {filteredResults.map((resource) => (
           <div key={resource.id} className={styles.documentContainer}>
             <img src={bolinhas} className={styles.bolinha} onClick={() => handleToggleBolinhaMenu(resource.id)}></img>

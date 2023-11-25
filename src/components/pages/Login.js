@@ -22,7 +22,13 @@ function Login() {
 
   const handleLoginSuccess = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
-    login();
+
+    
+    login({
+      name: decoded.name,
+      email: decoded.email, 
+    });
+
     navigate("/pesquisa");
   };
 
