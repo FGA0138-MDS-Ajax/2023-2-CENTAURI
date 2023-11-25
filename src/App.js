@@ -4,10 +4,12 @@ import Login from './components/pages/Login';
 import Error from './components/pages/Error';
 import Pesquisa from './components/pages/Pesquisa';
 import Usuario from './components/pages/Usuario';
+import { AuthProvider } from './components/pages/AuthContext';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Routes>
           <Route exact path='/' element={<Home/>}/>
@@ -17,6 +19,7 @@ function App() {
           <Route exact path='/usuario' element={<Usuario/>}/>
         </Routes>
       </Router>
+      </AuthProvider>
     </div>
   );
 }
