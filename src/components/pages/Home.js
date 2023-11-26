@@ -6,7 +6,9 @@ import botaoPlus from "../img/Plus Button.svg"
 import onda from "../img/Rectangle9.svg"
 import menina from "../img/meninaNotebook.svg"
 import fundo from "../img/fundoMenina.svg"
+import { Link, useNavigate } from 'react-router-dom';
 const { MeiliSearch } = require('meilisearch')
+
 
 
 function Home(){
