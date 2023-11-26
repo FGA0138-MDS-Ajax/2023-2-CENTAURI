@@ -8,7 +8,7 @@ function Error(){
        <div className = {styles.error_container}>
        <img src = {topo} className = {styles.imagem}></img>
        <h1 className = {styles.texto1}>
-            Ops!
+              Ops! 
         </h1>
         <p className = {styles.texto2}>
             Página não encontrada
