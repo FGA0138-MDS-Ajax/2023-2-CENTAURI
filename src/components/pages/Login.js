@@ -31,9 +31,14 @@ function Login() {
     navigate("/pesquisa"); 
   };
 
+  const paginainicial = () => {
+    navigate("/");
+  }
+
   return (
     <div className={styles.login_container}>
-      <img src={logo} className={styles.logo} alt="logo"></img>
+      
+      <img src={logo} className={styles.logo} onClick={paginainicial} alt="logo"></img>
       <img src={menino} className={styles.Menino}></img>
       <h1 className={styles.bv}>Bem vindos ao UnBuscas</h1>
       <div className={styles.c1}>

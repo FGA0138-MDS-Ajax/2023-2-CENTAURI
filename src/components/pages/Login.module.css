@@ -35,6 +35,11 @@
     left: 50px;
 }
 
+.logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 /* .botao_google {
     color: #FFFFFF;
 } */

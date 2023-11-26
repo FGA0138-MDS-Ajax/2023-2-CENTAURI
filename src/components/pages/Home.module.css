@@ -69,6 +69,41 @@
 }
 
 
+.botaologout{
+    top:80px;
+    right: 150px;
+    width: 140px;
+    height: 30px;
+    position: absolute;
+    /* display: flexbox; */
+    justify-content: right;
+    /* align-items: center; */
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
+}
+
+.botaologout:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.login{
+    right: 16%;
+    top:35px;
+    position: absolute;
+}
+
+.profile{
+    font-family: Poppins, serif;
+    font-size: 20px;
+    right: 5%;
+    position: absolute;
+    top: 30px;
+}
+
 .logo_container{
     margin-top: 200px;
     margin-bottom: 50px;
