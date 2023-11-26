@@ -52,7 +52,7 @@ function Usuario() {
       <div>
         {isLoggedIn ? (
           <div>
-            <h1 className={styles.sair}>Sair da conta</h1>
+            <button className={styles.sair}>Sair da conta</button>
             <div>
               <form action="" className={styles.search_bar}>
                 <input type="text" placeholder="Faça sua pesquisa" />
