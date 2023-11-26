@@ -65,12 +65,19 @@
 }
 
 .sair{
-    font-size: 20px;
-    left: 93%;
-    top: 4%;
-    font-family: Poppins, sans-serif;
+    top:80px;
+    right: 150px;
+    width: 140px;
+    height: 30px;
     position: absolute;
-    z-index: 2;
+    /* display: flexbox; */
+    justify-content: right;
+    /* align-items: center; */
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
 }
 
 .retangulo {
