@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from "./Pesquisa.module.css";
 import { MeiliSearch } from 'meilisearch';
 import onda from "../img/Rectangle 8.svg";
@@ -144,8 +144,7 @@ function Pesquisa() {
         {!isLoggedIn && (
           <div className={styles.button_login_container}>
             <div>
-              <button className={styles.botaoLogin}
-              onClick={() => navigate('/login')}>LOGIN</button>
+              <button className={styles.botaoLogin} onClick={() => navigate('/login')}>LOGIN</button>
             </div>
           </div>
         )}
@@ -153,15 +152,15 @@ function Pesquisa() {
         {isLoggedIn && (
           <div>
             <button className={styles.botaologout} onClick={handleLogout}>Logout</button>
+            <Link to="/usuario">
+              <div>
+                <img src={login} className={styles.login} alt="login"></img>
+                <p className={styles.profile}>{user?.name}</p>
+              </div>
+            </Link>
           </div>
         )}
         <img src={filtro} className={styles.filtro} alt="filtro" onClick={handleToggleFilters}></img>
-        {isLoggedIn && (
-          <div>
-            <img src={login} className={styles.login} alt="login"></img>
-            <p className={styles.profile}>{user?.name}</p>
-          </div>
-        )}
       </div>
 
       <form className={styles.search_bar}>
@@ -234,3 +233,4 @@ function Pesquisa() {
 }
 
 export default Pesquisa;
+

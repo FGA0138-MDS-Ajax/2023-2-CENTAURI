@@ -23,13 +23,12 @@ function Login() {
   const handleLoginSuccess = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
 
-    
     login({
       name: decoded.name,
-      email: decoded.email, 
+      email: decoded.email,
     });
 
-    navigate("/pesquisa");
+    navigate("/pesquisa"); 
   };
 
   return (
