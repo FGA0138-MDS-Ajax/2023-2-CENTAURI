@@ -136,7 +136,11 @@
     cursor: pointer;
 }
 
+.plus{
+padding-top: 6vh;
+justify-content: center;
 
+}
 
 .sobreUnBusca_container {
     display: flex;
@@ -165,8 +169,16 @@ max-height: 800px;
     display: flex;
     width: 100%;
     height: 20vh;
-}
+    align-items: center;
 
+}
+.facilidades_titulo h1 {
+    text-align: left;
+    padding-left: 18vh;
+    width: 100%;
+    font-family: Poppins, serif;
+    font-size: 40px;   
+}
 .bolinhas{
 width: 100%;
 justify-content: space-between;
@@ -262,5 +274,13 @@ justify-items: center;
     .texto2{
         font-size: 15px;
     }
-    
+    .texto3{
+
+        font-size: 15px;   
+     
+    }
+    .titulo3{
+        font-size: 15px;   
+
+    }
 }

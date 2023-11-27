@@ -47,7 +47,7 @@ function Home(){
                     <div>
                         <h1>Confira mais sobre o Projeto</h1>
                     </div>
-                    <div>
+                    <div className = {styles.plus}>
                         <Plus/>               
                     </div>
                 </div>
@@ -67,7 +67,7 @@ function Home(){
                 </div>
                 <div className={styles.facilidades_container}>
                 <div className={styles.facilidades_titulo}>
-                <h1 className={styles.titulo}>Nossas Facilidades</h1> 
+                <h1>Nossas Facilidades</h1> 
                 </div>
                 <div className={styles.bolinhas}>
                     <img src={bolinha1}></img>
