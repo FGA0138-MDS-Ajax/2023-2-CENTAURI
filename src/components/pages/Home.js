@@ -31,8 +31,6 @@ function Home(){
     };
     const handleLogout = () => {
         logout();
-        localStorage.setItem('isLoggedIn', 'false');
-        localStorage.removeItem('user');
     };
 
       

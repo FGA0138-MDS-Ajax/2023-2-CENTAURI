@@ -27,6 +27,7 @@ function Pesquisa() {
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
   const { isLoggedIn, logout, user, setUser } = useAuth(); 
+  
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
@@ -122,10 +123,8 @@ function Pesquisa() {
     window.open(resource.link, '_blank');
   };
 
-  const handleLogout = () => {
+  const handleLogoutSucess = () => {
     logout();
-    localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('user');
   };
 
   useEffect(() => {
@@ -151,7 +150,7 @@ function Pesquisa() {
         
         {isLoggedIn && (
           <div>
-            <button className={styles.botaologout} onClick={handleLogout}>Logout</button>
+            <button className={styles.botaologout} onClick={handleLogoutSucess}>Logout</button>
             <Link to="/usuario">
               <div>
                 <img src={login} className={styles.login} alt="login"></img>
