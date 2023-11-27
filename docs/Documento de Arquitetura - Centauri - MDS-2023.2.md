@@ -29,6 +29,9 @@ O sistema seguirá uma arquitetura de Microsserviços.
 Escolhemos a arquitetura de microsserviços com base nos objetivos que desejamos alcançar durante o projeto, isto é: um back-end de motor de busca, um back-end de login de usuários e um front-end. Isso quer dizer que, ao modularizar essas seções e deixando-as independentes durante o processo, o desenvolvimento para essa proposta foi facilitada. Além disso, foi possível fazer o uso de diferentes linguagens em cada seção, o que facilitou também no desenvolvimento do projeto principalmente pela utilização de frameworks que facilitaram boa parte do projeto.
 ### 2.3 DETALHAMENTO
 ![Image1](https://github.com/Danizelle/Danizelle/assets/101230741/01167306-02ce-4ff5-999a-bd5cf31ba320)
+
+***Figura 1 - Visão esquemática do estilo de arquitetura de micro serviços***
+
 ### 2.4 METAS E RESTRIÇÕES ARQUITETURAIS
 - O sistema deve atender às consultas em até 50 milissegundos, pelo tempo do servidor ser pequeno e já mostrar resultados enquanto o usuário estiver digitando.
 - O sistema deve usar a linguagem RUST para o backend, MySQL para o banco de dados do motor de busca e do usuário, o React e Node.js para o front-end.
@@ -38,6 +41,8 @@ Escolhemos a arquitetura de microsserviços com base nos objetivos que desejamos
 
 ### 2.5 VISÃO DE CASOS DE USO (ESCOPO DO PRODUTO)
 ![Image3](https://github.com/Danizelle/Danizelle/assets/101230741/eec97454-7164-4e54-b126-955895f0a1f5)
+
+***Figura 2 - Diagrama de caso de uso***
 
 O escopo dos casos de uso é bem tranquilo por se tratar de um fluxo simples para realizar pesquisas de documentos da UnB e possivelmente baixar, filtrar ou salvar em seus favoritos. Para este último é necessário realizar a autenticação pelo sistema externo integrado do Google que terá no UnBuscas. 
 
@@ -55,15 +60,54 @@ O escopo dos casos de uso é bem tranquilo por se tratar de um fluxo simples par
 -	Da página de login, se pode voltar para a página home e ir para a página de usuários(onde os documentos favoritos são armazenados).
 -	Da página de pesquisa, se pode ir para a para a página de erro(quando um documento não foi encontrado).
 
+#### 2.6.3 Diagrama de estados
+
+![Diagrama de estados](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/86ef0292-ecb1-483f-8743-5c397f6e3e3d)
+
+***Figura 3 - Diagrama de estados***
+
+#### 2.6.4 Diagrama de atividades
+
+![diagrama de atividades](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/d1a3f510-6bff-4123-8e37-4ef90c2a393c)
+
+***Figura 4 - Diagrama de atividades***
+
+#### 2.6.5 Diagranma de Classes
+
+![Diagrama de classes](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/54f38caf-7591-495f-b238-55a76e811349)
+
+***Figura 5 - Diagrama de Classes***
+
+#### 2.6.6 Diagrama de Data-flow
+
+![Diagrama 3](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/2cfd8799-e497-452b-a239-85907d66538e)
+
+***Figura 6 - Diagrama de Data-flow do back-end do motor de busca***
+
+
 ### 2.7 VISÃO DE IMPLEMENTAÇÃO
 ![Image4](https://github.com/Danizelle/Danizelle/assets/101230741/096ca5b7-5e14-4c46-a05e-5f4affc81930)
-###### Figura 7 - Diagrama de Pacotes
+
+***Figura 7 - Diagrama de pacotes***
 
 Quando o usuário visualiza a interface de aplicação ele pode realizar a autenticação do Google ou seguir para a pesquisa, filtro ou download de documentos que é auxiliada pelo banco de dados.
+
+![Pesquisa](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/1aeaab5d-4e20-44e2-8c8d-3df02bea54bc)
+
+***Figura 8 - Página de Resultado de Pesquisa***
+
+![Página do Usuário](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/a494e5c8-0b9e-4be3-af1a-aadce5c605a9)
+
+***Figura 9 - Página de Favoritos***
+
+![Home](https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/6685262b-cea2-4257-ad68-ab86642f6660)
+
+***Figura 10 - Página Inicial***
 
 ### 2.8 VISÃO DE IMPLANTAÇÃO
 
 ![Image2](https://github.com/Danizelle/Danizelle/assets/101230741/9eb8bef5-4650-4057-975e-05a705c3a864)
+***Figura 11 - Diagrama da visão de implantação***
 
 O software será implantado em um Desktop para ser executado em um servidor web como a maioria dos motores de busca da atualidade, segundo as tecnologias Rust, React e NodeJs.  O Rust foi escolhido devido à sua capacidade de oferecer abstrações de baixo custo e segurança de memória sem a necessidade de um coletor de lixo. Seu compilador detecta erros durante a compilação e evita a necessidade de alguns tipos de testes unitários. O Node JS foi selecionado para o BackEnd do fluxo de usuários, enquanto o React, escolhido para o front-end, permite a criação de interfaces de usuário divididas em componentes reutilizáveis, tornando o trabalho eficiente e ágil para a equipe do UnBuscas.
 
@@ -71,3 +115,12 @@ Assim como o banco de dados MySQL para o banco de usuário e Meilisearch para o 
 
 ### 2.9 RESTRIÇÕES ADICIONAIS 
 - Exigir que os usuários façam login para favoritar os documentos que deseja, o motivo para isso é a confiabilidade e portabilidade do software, criando um ambiente seguro e manter os favoritos do usuário caso utilize em diferentes dispositivos.
+
+### 3. REFERÊNCIAS
+
+Grupo Alpha Centauri. **Miro Mind Maps MDS**. Disponível em: https://miro.com/app/board/uXjVMlLh5MM=/?share_link_id=69700570299. Acesso em: 05 de outubro de 2023
+
+LETÍCIA, M.; PEDRO MIGUEL. **MDS Centauri - Backlog e Critérios de Aceitação.** 2023. Disponível em: https://docs.google.com/spreadsheets/d/18qN3aizmMQCIOUuCEOiuYvgYZNmI8NbCw8UrxjjkHCk/edit#gid=600013620.
+
+Documentação Backend MDS Centauri, disponível em: https://proptest-rs.github.io/proptest/intro.html,https://docs.rs/meilisearch-sdk/latest/meilisearch_sdk,https://actix.rs/docs/.
+
