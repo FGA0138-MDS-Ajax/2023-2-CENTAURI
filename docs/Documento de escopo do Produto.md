@@ -1,3 +1,11 @@
+### Histórico de Revisão
+Data | Versão | Descrição | Autor(es)
+---|---|---|---|
+23/10/2023 | 1.0 |  |
+19/11/2023| 2.0 | Correção com base na análise do professor| Todos
+
+
+
 ## PROBLEMA/SISTEMA DE SOFTWARE
 
 ***Definição da equipe:*** 
