@@ -84,7 +84,7 @@ router.get("/google/callback", passport.authenticate("google",), (req, res) => {
         // we are saying that create a cookie with a name of googleAuthToken and we are passing the token that we generated on line no 80, and the 3rd parameter is the expire of that cookie.
         res.cookie("googleAuthToken", googleAuthToken, { expires: new Date(Date.now() + 86400 * 1000), httpOnly: true })
         // we are now redirecting the user to localhost:3000 which is our frontend
-        res.redirect("http://localhost:3000")
+        res.redirect("http://localhost:3000/pesquisa")
     }
 });
 
@@ -107,4 +107,3 @@ router.get("/logout", (req, res) => {
 });
 
 module.exports = router
-

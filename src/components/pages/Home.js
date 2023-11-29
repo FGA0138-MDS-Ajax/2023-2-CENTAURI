@@ -2,21 +2,25 @@ import { useState } from 'react'
 import styles from "./Home.module.css"
 import botaoPesquisa from '../img/botaoPesquisa.svg'
 import logo from "../img/logo.svg"
+import login from "../img/Login.svg";
 import botaoPlus from "../img/Plus Button.svg"
 import onda from "../img/Rectangle9.svg"
 import menina from "../img/meninaNotebook.svg"
 import fundo from "../img/fundoMenina.svg"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from './AuthContext';
 const { MeiliSearch } = require('meilisearch')
 
 
 
 function Home(){
     const [searchResults, setSearchResults] = useState([]);
+    const { isLoggedIn, logout, user, setUser } = useAuth(); 
     const client = new MeiliSearch({
       host: 'http://127.0.0.1:7700',
       apiKey: 'masterKey',
     })
+    const navigate = useNavigate();
 
     const searchDocuments = async (e)=> {
         client
@@ -26,13 +30,32 @@ function Home(){
                 setSearchResults(results.hits);
         });
     };
+    const handleLogout = () => {
+        logout();
+    };
+
+      
     return(
         <div className={styles.home_container}>
+            
+        {!isLoggedIn && (    
             <div className={styles.button_login_container}>
                 <div>
-                    <button  className = {styles.botaoLogin}>LOGIN</button>
+                <button className={styles.botaoLogin} onClick={() => navigate("/login")}>LOGIN</button>
                 </div>
             </div>
+        )}        
+        {isLoggedIn && (
+          <div>
+            <button className={styles.botaologout} onClick={handleLogout}>Logout</button>
+            <Link to="/usuario">
+              <div>
+                <img src={login} className={styles.login} alt="login"></img>
+                <p className={styles.profile}>{user?.name}</p>
+              </div>
+            </Link>
+          </div>
+        )}
             <div className={styles.body}>
                 <div className={styles.logo_container}>
                     <img src = {logo} className={styles.logo} alt="logo"></img>
