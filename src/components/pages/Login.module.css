@@ -123,3 +123,8 @@
 .button_login{
     width: 40px;
 }
+
+.c1{
+    margin-left: 60%;
+    display: flexbox;
+}

@@ -13,6 +13,7 @@ import login from "../img/Login.svg";
 import lupa from "../img/lupa.svg";
 import onda2 from "../img/Rectangle 22.svg";
 import { useAuth } from './AuthContext';
+import axios from "axios";
 
 function Pesquisa() {
   const [searchResults, setSearchResults] = useState([]);
@@ -26,8 +27,14 @@ function Pesquisa() {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
+  const [favorite, setFavorite] = useState({
+    favoritesId: '',
+    userToken: '',
+    documentId: ''
+  });
+  const [ inputErrorList, setInputErrorList] = useState({})
+
   const { isLoggedIn, logout, user, setUser } = useAuth(); 
-  
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
@@ -123,6 +130,32 @@ function Pesquisa() {
     window.open(resource.link, '_blank');
   };
 
+  const handleFavoriteClick = (documentId) => {
+    setFavorite({
+      userToken: user.token,
+      documentId: documentId,
+    });
+    saveFavorite(documentId);
+  };
+
+  const saveFavorite = (documentId) => {
+    const data = {
+      favoritesId: user.id,
+      userToken: user.token,
+      documentId: documentId, // Certifique-se de passar o ID do documento aqui
+    };
+
+    axios.post('http://localhost:3000/api/favoritos', data)
+      .then(res => {
+        alert(res.data);
+      })
+      .catch(function (error) {
+        if (error.response.status === 422) {
+          console.error(error.response.data.errors);
+        }
+      });
+  };
+
   const handleLogoutSucess = () => {
     logout();
   };
@@ -212,7 +245,10 @@ function Pesquisa() {
                   <p className={styles.downloadText}>Download</p>
                 </div>
                 {isLoggedIn && (
-                  <div>
+                  <div 
+                  className={styles.botaoFav}
+                  onClick={() => handleFavoriteClick(resource.id)}
+                  >
                     <img src={coracao} className={styles.coracao}></img>
                     <p className={styles.coracaoText}>Salve como seu favorito</p>
                   </div>
@@ -232,4 +268,3 @@ function Pesquisa() {
 }
 
 export default Pesquisa;
-
