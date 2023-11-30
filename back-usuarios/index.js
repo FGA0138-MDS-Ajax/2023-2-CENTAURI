@@ -26,6 +26,8 @@ db.getConnection((err,connection) => {
 
 app.use('/auth', require('./routers/auth/passport.js'));
 
+app.use('/api/favoritos', require('./routers/auth/passport.js'));
+
 // app.use("/",userRoutes);
 
 app.listen(PORT, () =>{

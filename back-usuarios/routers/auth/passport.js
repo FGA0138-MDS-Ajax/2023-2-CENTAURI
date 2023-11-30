@@ -106,4 +106,25 @@ router.get("/logout", (req, res) => {
     })
 });
 
+router.post('/api/favoritos', (req, res) => {
+    const { favoritesId, userToken, documentId } = req.body;
+  
+    // Verifique se o usuário está autenticado, caso contrário, retorne um erro
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: 'Usuário não autenticado.' });
+    }
+  
+    // Lógica para salvar favoritos no banco de dados
+    db.query(
+      'INSERT INTO favorites (userToken, documentId) VALUES (?, ?)',
+      [userToken, documentId],
+      (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: 'Erro ao salvar favorito.' });
+        }
+        return res.status(200).json({ message: 'Favorito salvo com sucesso.' });
+      }
+    );
+  });
+
 module.exports = router
