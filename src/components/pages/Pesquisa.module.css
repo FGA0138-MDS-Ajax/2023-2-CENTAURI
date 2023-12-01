@@ -150,7 +150,9 @@
 .downloadAll{
     cursor: pointer;
 }
-
+.botaoFav{
+    cursor: pointer;
+}
 .dowloadIcon{
     width: 20px;
     height: 20px;

@@ -10,43 +10,52 @@
     background-position: center;
     background-size: cover;
     background-color: #FFFFFF;
-    display: flex;
+    display: inline;
     align-items: center;
     justify-content: center;
+    
 }
 
 .imagem{
+    left: 0%;
+    top: -5%;
     position: absolute;
-    top: 0px;
-    width:3000px;
+    width: 100%;
+    z-index: -1;
 }
 
 .texto1{
-    position: absolute;
-    top: 300px;
-    
+    margin-top: 12%;
+    margin-left: 45%;
+    display: flex;
     font-family: Poppins, serif;
     font-size: 70px;   
+    align-items: center;
+    justify-items: center;
 }
 
 .texto2{
-    position:absolute;
-    top:430px;
+    margin-top: 1%;
+    margin-left: 39%;
     font-family: Poppins, serif;
     font-size: 25px; 
     width: 400px;
+    display: flexbox;
     text-align: center;
+    justify-items: center;
 }
 
 .meditando{
-    position: absolute;
-    top: 400px;
+    margin-top: -5%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 
 .botao{
+    /* margin-top: 1000px; */
     position: absolute;
-    top:1050px;
-    left: 850px;
+    margin-left: 45%;
     width: 170px;
     height: 35px;
     background-color: #00305b;
@@ -54,9 +63,13 @@
     font-family: Poppins, serif;
     border-radius: 15px;
     box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
+    display: flexbox;
+    text-align: center;
+    justify-items: center;
 }
 
 .botao:hover{
     transform: scale(1.1);
     cursor: pointer;
+    
 }
