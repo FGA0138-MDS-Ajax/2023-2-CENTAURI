@@ -107,6 +107,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.post('/favoritos', (req, res) => {
+
     const { favoritesId, userToken, documentId } = req.body;
   
     // Verifique se o usuário está autenticado, caso contrário, retorne um erro
@@ -126,5 +127,6 @@ router.post('/favoritos', (req, res) => {
       }
     );
   });
+
 
 module.exports = router
