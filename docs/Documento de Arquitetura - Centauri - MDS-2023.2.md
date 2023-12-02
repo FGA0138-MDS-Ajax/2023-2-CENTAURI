@@ -1,20 +1,22 @@
 
 ### Histórico de Revisão
-Data | Versão | Descrição | Autor(es)
----|---|---|---|
-03/11/2023 | 1.0 | Finalização da Versão do Documento de Arquitetura | Grupo Centauri
+
+| Data | Versão | Descrição | Autor(es)
+|---|---|---|---|
+| 03/11/2023 | 1.0 | Finalização da Versão do Documento de Arquitetura | Grupo Centauri
+
 ### Autores
 
-Matrícula | Nome | Descrição do papel assumido na equipe| % de contrubuição ao trabalho
----|---|---|---|
-200059980|Pedro Miguel Martins de Oliveira dos Santos|Acompanhamento e desenvol vimento Frontend e Backend com foco maior nesse último.| 20%
-211062230|Mariana Letícia Santos da Cruz1|Scrum Master e acompanhamento do desenvolvimento do Back-end.| 15%
-211061402|André João Cordeiro Gomes| Acompanhamento no back e no front, com foco no que for necessário durante a sprint.| 10%
-211061574|Danielle Rodrigues Silva|Desenvolvimento Frontend e Prototipação| 10%
-211062446|Renan Araújo de Souza|Desenvolvimento Frontend e Prototipação| 20%
-211062526| Thomas Queiroz Souza Alves.|Planejamento e codificação do backend de Busca de Documentos; Testes Unitários e de Integração; Otimização do backend de Busca para atender aos requisitos não funcionais.| 3%
-211041132| Felipe Guimarães Fernandes|Desenvolvimento Frontend.| 12%
-202023805|João Paulo Barros de Cristo|Acompanhamento no back e front, com foco em ajudar nas sprints.| 12%
+|Matrícula | Nome | Descrição do papel assumido na equipe| % de contrubuição ao trabalho
+|---|---|---|---|
+|200059980|Pedro Miguel Martins de Oliveira dos Santos|Acompanhamento e desenvol vimento Frontend e Backend com foco maior nesse último.| 20%
+|211062230|Mariana Letícia Santos da Cruz|Scrum Master e acompanhamento do desenvolvimento do Back-end.| 15%
+|211061402|André João Cordeiro Gomes| Acompanhamento no back e no front, com foco no que for necessário durante a sprint.| 10%
+|211061574|Danielle Rodrigues Silva|Desenvolvimento Frontend e Prototipação| 10%
+|211062446|Renan Araújo de Souza|Desenvolvimento Frontend e Prototipação| 20%
+|211062526|Thomas Queiroz Souza Alves|Planejamento e codificação do backend de Busca de Documentos; Testes Unitários e de Integração; Otimização do backend de Busca para atender aos requisitos não funcionais.| 3%
+|211041132|Felipe Guimarães Fernandes|Desenvolvimento Frontend.| 12%
+|202023805|João Paulo Barros de Cristo|Acompanhamento no back e front, com foco em ajudar nas sprints.| 12%
 
 
 ## 1. INTRODUÇÃO 

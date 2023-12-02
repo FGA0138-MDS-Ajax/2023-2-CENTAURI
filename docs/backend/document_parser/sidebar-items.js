@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["create_folders_if_not_exist","extract_date","extract_portuguese_date","extract_text","get_link","main","prompt_normative","return_date","return_parameters","return_title"],"struct":["Data","Entry"]};
