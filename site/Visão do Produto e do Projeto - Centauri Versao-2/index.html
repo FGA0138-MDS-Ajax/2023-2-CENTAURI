@@ -1,0 +1,1864 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Documento%20de%20escopo%20do%20Produto/">
+      
+      
+        <link rel="next" href="../Documento%20de%20Arquitetura%20-%20Centauri%20-%20MDS-2023.2/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
+    
+    
+      
+        <title>Visão - UnBuscas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#historico-de-revisao" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="UnBuscas" class="md-header__button md-logo" aria-label="UnBuscas" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UnBuscas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Visão
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Documento%20de%20escopo%20do%20Produto/" class="md-tabs__link">
+        
+  
+    
+  
+  Escopo
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Visão
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Documento%20de%20Arquitetura%20-%20Centauri%20-%20MDS-2023.2/" class="md-tabs__link">
+        
+  
+    
+  
+  Arquitetura
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../atasReuniao/" class="md-tabs__link">
+        
+  
+    
+  
+  Atas de Reunião
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="UnBuscas" class="md-nav__button md-logo" aria-label="UnBuscas" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    UnBuscas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Documento%20de%20escopo%20do%20Produto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Escopo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Visão
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Visão
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Revisão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-visao-geral-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VISÃO GERAL DO PRODUTO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. VISÃO GERAL DO PRODUTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 PROBLEMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-declaracao-de-posicao-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 DECLARAÇÃO DE POSIÇÃO DO PRODUTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-objetivos-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 OBJETIVOS DO PRODUTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-tecnologias-a-serem-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 TECNOLOGIAS A SEREM UTILIZADAS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2visao-geral-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.VISÃO GERAL DO PROJETO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.VISÃO GERAL DO PROJETO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 CICLO DE VIDA DO PROJETO DE DESENVOLVIMENTO DE SOFTWARE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-organizacao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 ORGANIZAÇÃO DO PROJETO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 PLANEJAMENTO DAS FASES E/OU ITERAÇÕES DO PROJETO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-matriz-de-comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 MATRIZ DE COMUNICAÇÃO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-gerenciamento-de-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 GERENCIAMENTO DE RISCOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-criterios-de-replanejamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 CRITÉRIOS DE REPLANEJAMENTO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-processo-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cerimonias-do-scrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cerimônias do Scrum:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#praticas-utilizadas-do-xp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práticas Utilizadas do XP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-detalhamento-de-atividade-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 DETALHAMENTO DE ATIVIDADE DO PROJETO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 DETALHAMENTO DE ATIVIDADE DO PROJETO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-atividade-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 ATIVIDADE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-atividade-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 ATIVIDADE 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-atividade-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 ATIVIDADE 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-atividade-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 ATIVIDADE 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-atividade-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 ATIVIDADE 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-atividade-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 ATIVIDADE 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-atividade-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 ATIVIDADE 7
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-licoes-aprendidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. LIÇÕES APRENDIDAS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. LIÇÕES APRENDIDAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-unidade-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 UNIDADE 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. PRÓXIMOS PASSOS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. PRÓXIMOS PASSOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-product-backlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 PRODUCT BACKLOG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 PRODUCT BACKLOG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1.1 Requisitos funcionais
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-requisitos-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1.2 Requisitos não funcionais
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-sprint-e-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 SPRINT E RELEASES.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 SPRINT E RELEASES.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-sprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2.1 SPRINT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2.2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-minimum-viable-product-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 MINIMUM VIABLE PRODUCT (MVP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 REFERÊNCIAS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Documento%20de%20Arquitetura%20-%20Centauri%20-%20MDS-2023.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arquitetura
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atasReuniao/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Atas de Reunião
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-revisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Revisão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-visao-geral-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VISÃO GERAL DO PRODUTO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. VISÃO GERAL DO PRODUTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 PROBLEMA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-declaracao-de-posicao-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 DECLARAÇÃO DE POSIÇÃO DO PRODUTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-objetivos-do-produto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 OBJETIVOS DO PRODUTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-tecnologias-a-serem-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 TECNOLOGIAS A SEREM UTILIZADAS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2visao-geral-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.VISÃO GERAL DO PROJETO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.VISÃO GERAL DO PROJETO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 CICLO DE VIDA DO PROJETO DE DESENVOLVIMENTO DE SOFTWARE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-organizacao-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 ORGANIZAÇÃO DO PROJETO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-planejamento-das-fases-eou-iteracoes-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 PLANEJAMENTO DAS FASES E/OU ITERAÇÕES DO PROJETO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-matriz-de-comunicacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 MATRIZ DE COMUNICAÇÃO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-gerenciamento-de-riscos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 GERENCIAMENTO DE RISCOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-criterios-de-replanejamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 CRITÉRIOS DE REPLANEJAMENTO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-processo-de-desenvolvimento-de-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cerimonias-do-scrum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cerimônias do Scrum:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#praticas-utilizadas-do-xp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práticas Utilizadas do XP:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-detalhamento-de-atividade-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 DETALHAMENTO DE ATIVIDADE DO PROJETO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 DETALHAMENTO DE ATIVIDADE DO PROJETO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-atividade-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 ATIVIDADE 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-atividade-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 ATIVIDADE 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-atividade-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 ATIVIDADE 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-atividade-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 ATIVIDADE 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-atividade-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 ATIVIDADE 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-atividade-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6 ATIVIDADE 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-atividade-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 ATIVIDADE 7
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-licoes-aprendidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. LIÇÕES APRENDIDAS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. LIÇÕES APRENDIDAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-unidade-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 UNIDADE 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. PRÓXIMOS PASSOS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. PRÓXIMOS PASSOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-product-backlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 PRODUCT BACKLOG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 PRODUCT BACKLOG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-requisitos-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1.1 Requisitos funcionais
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-requisitos-nao-funcionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1.2 Requisitos não funcionais
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-sprint-e-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 SPRINT E RELEASES.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 SPRINT E RELEASES.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-sprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2.1 SPRINT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2.2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-minimum-viable-product-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 MINIMUM VIABLE PRODUCT (MVP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 REFERÊNCIAS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Visão</h1>
+
+<h3 id="historico-de-revisao">Histórico de Revisão</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor(es)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08/10/2023</td>
+<td>1.0</td>
+<td>Criação do documento de escopo</td>
+<td>Grupo Centauri</td>
+</tr>
+<tr>
+<td>24/10/2023</td>
+<td>2.0</td>
+<td>Atualizando o documento de visão para ficar correspondente ao de escopo</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-visao-geral-do-produto">1. VISÃO GERAL DO PRODUTO</h2>
+<h3 id="11-problema">1.1 PROBLEMA</h3>
+<p>Qual é uma das principais dificuldades enfrentadas pelos alunos da Universidade de Brasília que pode impactar negativamente suas oportunidades, relacionada à dificuldade de encontrar documentos importantes e de interesse devido à demora na busca, documentos espalhados ou desatualizados?</p>
+<p><img alt="1" src="https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/9d2d88bb-0785-4905-82ed-db695f8984f2" /></p>
+<p><em>Imagem 1 - Visão do Problema</em></p>
+<h3 id="12-declaracao-de-posicao-do-produto">1.2 DECLARAÇÃO DE POSIÇÃO DO PRODUTO</h3>
+<p>
+
+1.    Qual é o produto que o grupo se propõe a desenvolver?
+
+É um motor de pesquisa, com o principal objetivo buscar documentos oficiais da Universidade de Brasília de uma maneira rápida e com eles centralizados, para facilitar o usuário encontrar o que deseja.
+
+2.    O que torna este produto diferente dos seus concorrentes (se existirem concorrentes)?
+
+3.    Quem são os usuários-alvo e clientes do produto? Quais suas características e por que o produto é importante para eles.
+
+Os usuários-alvo são alunos da Universidade de Brasília, o produto é importante para eles porque eles podem encontrar documentos da faculdade com facilidade.
+
+4.    Por que os clientes deveriam utilizar / comprar este produto?
+
+Eles devem usar esse produto, porque muitas vezes um aluno pode demorar para achar algum documento importante que esteja procurando, e a aplicação além de deixar todos eles centralizados, a busca é feita de maneira rápida.</p>
+
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Para:</td>
+<td>estudantes da Universidade de Brasília</td>
+</tr>
+<tr>
+<td>Necessidade:</td>
+<td>encontrar documentos importantes e interessantes da faculdade</td>
+</tr>
+<tr>
+<td>O(UnBuscas):</td>
+<td>é uma aplicação WEB</td>
+</tr>
+<tr>
+<td>Que:</td>
+<td>busca documentos oficiais da Universidade de Brasília</td>
+</tr>
+<tr>
+<td>Ao contrário:</td>
+<td>de outros motores de busca que demoram mais para pesquisar</td>
+</tr>
+<tr>
+<td>Nosso produto:</td>
+<td>tem uma alta eficiência e rapidez na hora de buscar</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 1 - Posição do produto</em></p>
+<h3 id="13-objetivos-do-produto">1.3 OBJETIVOS DO PRODUTO</h3>
+<p> O objetivo do projeto é desenvolver um software que simplifica e padroniza a busca por documentos da Universidade de Brasília   (UnB). A intenção é criar uma experiência de busca mais intuitiva e amigável, diminuindo a quantidade de obstáculos que o usuário possa enfrentar devido à diversidade de formatos e estruturas de arquivos que a UnB apresenta. Ao proporcionar uma ferramenta que torna isso mais acessível para o público.</p>
+
+<h3 id="14-tecnologias-a-serem-utilizadas">1.4 TECNOLOGIAS A SEREM UTILIZADAS</h3>
+<ul>
+<li>Linguagens de Programação: Rust, React</li>
+<li>Framework - Actix-web: criar o aplicativo web, tratando solicitações HTTP.</li>
+<li>Biblioteca - Actix-rt, Rayon: Criar iteradores que usam processamento paralelo, Serde: Facilitar a manipulação dos documentos, transformando os vetores com os documentos em JSON e vice-versa, jQuery.</li>
+<li>API - Meili Search-SDK: Acesso ao banco de dados do motor de busca, NodeJs - acesso ao banco de dados dos usuários</li>
+<li>MySQL: Criar e gerenciar o banco de dados.</li>
+<li>Ambiente - Figma: Criação de designs da interface para o usuário, Github: Hospedar o projeto e salvar todo tipo de mudança do código-fonte , Zenhub: Gerenciamento e acompanhamento do progresso do projeto</li>
+<li>Método Ágil: ScrumXP</li>
+<li>VsCode: Ferramenta usada para programar em Rust.</li>
+</ul>
+<h2 id="2visao-geral-do-projeto">2.VISÃO GERAL DO PROJETO</h2>
+<h3 id="21-ciclo-de-vida-do-projeto-de-desenvolvimento-de-software">2.1 CICLO DE VIDA DO PROJETO DE DESENVOLVIMENTO DE SOFTWARE</h3>
+<p><img alt="2" src="https://github.com/FGA0138-MDS-Ajax/2023-2-CENTAURI/assets/101230741/26917903-5ca5-40d8-a29c-f3488e9f58c2" /></p>
+<p><em>Imagem 2 - Ciclo de Vida</em></p>
+<h3 id="22-organizacao-do-projeto">2.2 ORGANIZAÇÃO DO PROJETO</h3>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Atribuições</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desenvolvedor do Frontend</td>
+<td>Codificar e arrumar o front, bem como documenta-lo e fazer os testes unitário necessários.</td>
+<td>Danielle <br> Felipe <br> Renan</td>
+</tr>
+<tr>
+<td>Desenvolvedor do backend de pesquisas</td>
+<td>Codificar e arrumar o back de pesquisa, arrumar os arquivos da UNB, conectar com o front, documentar o que for necessário e fazer os testes unitário.</td>
+<td>Thomas <br> João Paulo <br> Pedro Miguel</td>
+</tr>
+<tr>
+<td>Desenvolvedor do backend de cadastro</td>
+<td>Codificar e arrumar o back de cadastro, arrumar uma forma de conectar ao front, documentar o que for necessário e fazer os testes unitário.</td>
+<td>André João <br> Mariana</td>
+</tr>
+<tr>
+<td>Cliente</td>
+<td>Testar o produto, ver se é aquilo que foi desejado, e caso necessário, falar se quer alguma mudança.</td>
+<td>Todos que precisarem de alguma informação da UnB.</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>Dá algumas dicas aos desenvolvedores, dando um base do que seria bom adicionar ou tirar do trabalho, e tirar duvidas em relação ao projeto.</td>
+<td>Gustavo</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 2 - Organização do projeto e equipe</em></p>
+<h3 id="23-planejamento-das-fases-eou-iteracoes-do-projeto">2.3 PLANEJAMENTO DAS FASES E/OU ITERAÇÕES DO PROJETO</h3>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Produto (entrega)</th>
+<th>Data Início</th>
+<th>Data Fim</th>
+<th>Entregáveis</th>
+<th>% Conclusão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1</td>
+<td>Planejamento do projeto</td>
+<td>28/08/2023</td>
+<td>25/09/2023</td>
+<td>Levantamento de issues e US’s <br> Levantamento de requisitos <br> Definição de ferramenta</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Sprint 2</td>
+<td>[US] 1 e 2</td>
+<td>25/09/2023</td>
+<td>02/10/2023</td>
+<td>Popular banco de dados <br> Criar parser de textos</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Sprint 3</td>
+<td>[US] 3 e 4</td>
+<td>02/10/2023</td>
+<td>09/10/2023</td>
+<td>Carregar dados do parser <br> Visualizar documentos na interface</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Sprint 4</td>
+<td>[US] 5</td>
+<td>16/10/2023</td>
+<td>23/10/2023</td>
+<td>Mostrar os dados de pesquisa</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Sprint 5</td>
+<td>[US] 6 e 7</td>
+<td>23/10/2023</td>
+<td>30/10/2023</td>
+<td>Visualizar erro <br> Entrar pela minha conta na página</td>
+<td>Em andamento</td>
+</tr>
+<tr>
+<td>Sprint 6</td>
+<td>[US] 8 e 9</td>
+<td>30/10/2023</td>
+<td>06/11/2023</td>
+<td>Armazenar dados de usuário <br> Filtrar dados de pesquisa</td>
+<td>A fazer</td>
+</tr>
+<tr>
+<td>Sprint 7</td>
+<td>[US] 10</td>
+<td>06/11/2023</td>
+<td>13/11/2023</td>
+<td>Favoritar documentos</td>
+<td>A fazer</td>
+</tr>
+<tr>
+<td>Sprint 8</td>
+<td>[US] 12</td>
+<td>13/11/2023</td>
+<td>20/11/2023</td>
+<td>Visualizar miniatura dos documentos favoritados</td>
+<td>A fazer</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 3 - Planejamento de fases e iterações do projeto</em></p>
+<h3 id="24-matriz-de-comunicacao">2.4 MATRIZ DE COMUNICAÇÃO</h3>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Área/Envolvimento</th>
+<th>Periodicidade</th>
+<th>Produtos Gerados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• Acompanhamento das atividades em andamento <br> • Acompanhamento dos riscos, compromissos, ações pendentes, indicadores</td>
+<td>Equipe do Projeto</td>
+<td>Semanal <br> Quinzenal</td>
+<td>• Transcrição da reunião <br> • Sprint Review pelo Microsoft Teams da Equipe <br> • Sprint Planning pelo Microsoft Teams da Equipe</td>
+</tr>
+<tr>
+<td>• Comunicar situação do projeto</td>
+<td>Equipe</td>
+<td>Diariamente</td>
+<td>• Transcrição das reuniões disponibilizado no Microsoft Teams <br> • Documento de Visão <br> • Mensagens pelo grupo da equipe no Whatsapp.</td>
+</tr>
+<tr>
+<td>• Gerenciar e supervisionar fases do Projeto</td>
+<td>Equipe</td>
+<td>Diariamente</td>
+<td>• Aplicativo voltado para gerência de projetos: Trello</td>
+</tr>
+<tr>
+<td>• Relacionar desenvolvimento do software e seu versionamento</td>
+<td></td>
+<td></td>
+<td>• Github</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 4 - Matriz de comunicação</em></p>
+<h3 id="25-gerenciamento-de-riscos">2.5 GERENCIAMENTO DE RISCOS</h3>
+<table>
+<thead>
+<tr>
+<th>Risco</th>
+<th>Grau De Exposição</th>
+<th>Mitigação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aumento do Escopo do Projeto</td>
+<td>Baixo</td>
+<td>• Reunião de planejamento de sprint semanal <br> • Backlog documento acompanhamento do projeto pelo Zenhub</td>
+</tr>
+<tr>
+<td>Não entregar das sprints completas</td>
+<td>Baixo</td>
+<td>Reajuste de entregas por sprint e tamanho da sprint para o nível de energia do time</td>
+</tr>
+<tr>
+<td>Trancamento da disciplina por parte da equipe</td>
+<td>Médio</td>
+<td>• Reajuste das sprints de todo projeto <br> • Diminuição parcial do escopo</td>
+</tr>
+<tr>
+<td>Mudança de Backlog para entregar releases</td>
+<td>Médio</td>
+<td>• Revisão de backlog constante <br> • Rotação de conhecimento na equipe</td>
+</tr>
+<tr>
+<td>Falta de conhecimento para trabalhar US</td>
+<td>Alto</td>
+<td>• Divisão de conhecimentos <br> • Equilibrar pares de programadores nas issues <br> • Recomendações com o monitor</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 5- Gerenciamento de riscos</em></p>
+<h3 id="26-criterios-de-replanejamento">2.6 CRITÉRIOS DE REPLANEJAMENTO</h3>
+<ul>
+<li>Mudança no número de membros da equipe;</li>
+<li>Mudança de funções entre os membros;</li>
+<li>Alteração de prazo de entrega;</li>
+<li>Utilização de tecnologias diferentes do previsto;</li>
+<li>Novos requisitos para o projet</li>
+</ul>
+<h2 id="3-processo-de-desenvolvimento-de-software">3. PROCESSO DE DESENVOLVIMENTO DE SOFTWARE</h2>
+<p><strong>ScrumXP:</strong> O ScrumXP combina as metodologias Scrum e Extreme Programming(XP). Scrum é uma abordagem ágil de desenvolvimento de software que enfatiza a entrega em ciclos curtos de tempo, chamados de sprints. Valoriza também a colaboração e trabalho em equipe a partir de times que conseguem ser auto-organizáveis e adaptáveis. O XP (extreme programming) é uma metodologia com foco em agilidade de equipes e qualidade de projetos, apoiada em valores como simplicidade, comunicação, feedback e coragem. O XP é uma metodologia baseada em comportamentos e atitudes.
+<strong>Scrum:</strong></p>
+<p><a href="https://www.siteware.com.br/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/08/metodo-scrum-01.png.webp">scrum</a></p>
+<p><em>Imagem 3 - Scrum diagrama de implementação</em></p>
+<h4 id="cerimonias-do-scrum">Cerimônias do Scrum:</h4>
+<table>
+<thead>
+<tr>
+<th>Cerimônias</th>
+<th>O que é</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint</td>
+<td>É um período predefinido em que uma equipe trabalhará para atingir um objetivo específico.</td>
+</tr>
+<tr>
+<td>Sprint Planning</td>
+<td>É uma reunião onde toda a equipe trabalha em conjunto para identificar o objetivo da sprint e definir o objetivo e o planejamento da sprint.</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>Na Daily, todos os dias do sprint, a equipe de desenvolvimento se reúne para revisar o progresso na sprint.</td>
+</tr>
+<tr>
+<td>Retrospectiva da sprint</td>
+<td>A retrospectiva é uma reunião onde a equipe analisa o que deu certo e onde há espaço para melhorias durante uma retrospectiva do sprint</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 6 - Scrum e suas cerimônias</em></p>
+<h4 id="praticas-utilizadas-do-xp">Práticas Utilizadas do XP:</h4>
+<table>
+<thead>
+<tr>
+<th>Práticas</th>
+<th>O que é</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Refatoração</td>
+<td>Realizaremos manutenções periódicas no código, a fim de melhorar o design e a estrutura do código.</td>
+</tr>
+<tr>
+<td>Projeto Simples</td>
+<td>Implementaremos o Projeto simples, significando que o código será eficiente, e atenderá aos requisitos e que seja fácil de testar, refatorar e adicionar novas funcionalidades.</td>
+</tr>
+<tr>
+<td>Integração Contínua</td>
+<td>O código irá ser frequentemente integrado (versionado) ajudando tanto na questão da transparência como no aumento da segurança do código a partir do controle de versões, evitando perda do código por modificações.</td>
+</tr>
+<tr>
+<td>Posse Coletiva</td>
+<td>A equipe passa a ser responsável por cada arquivo de código, não sendo necessário solicitar autorização para fazer alterações.</td>
+</tr>
+<tr>
+<td>Padronização de código</td>
+<td>Para que o desenvolvimento do código seja bem definido, consistente e de fácil leitura e interpretação Utilizaremos padrões de código. Essa prática melhora a qualidade geral do código produzido.</td>
+</tr>
+<tr>
+<td>Small Releases (Pequenas versões)</td>
+<td>Permite entregar o valor de forma incremental e iterativa.</td>
+</tr>
+<tr>
+<td>Testes Unitários</td>
+<td>Adotaremos os testes unitários a fim de garantir a qualidade do código e a sua aderência aos requisitos.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 7 - Scrum e suas cerimônias</em></p>
+<h2 id="4-detalhamento-de-atividade-do-projeto">4 DETALHAMENTO DE ATIVIDADE DO PROJETO</h2>
+<h3 id="41-atividade-1">4.1 ATIVIDADE 1</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criação do Protótipo de Baixa Fidelidade</td>
+<td>...</td>
+<td>Figma</td>
+<td>25/09/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 8 - Atividade 1 do projeto</em></p>
+<h3 id="42-atividade-2">4.2 ATIVIDADE 2</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Levantamento de Issues e US</td>
+<td>...</td>
+<td>Google docs</td>
+<td>25/09/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 9 - Atividade 2 do projeto</em></p>
+<h3 id="43-atividade-3">4.3 ATIVIDADE 3</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Levantamento de requisitos</td>
+<td>...</td>
+<td>Google docs</td>
+<td>25/09/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 10 - Atividade 3 do projeto</em></p>
+<h3 id="44-atividade-4">4.4 ATIVIDADE 4</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definição de ferramentas</td>
+<td>...</td>
+<td>Teams</td>
+<td>25/09/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 11 - Atividade 4 do projeto</em></p>
+<h3 id="45-atividade-5">4.5 ATIVIDADE 5</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protótipo de alta fidelidade</td>
+<td>...</td>
+<td>Figma</td>
+<td>02/10/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 12 - Atividade 5 do projeto</em></p>
+<h3 id="46-atividade-6">4.6 ATIVIDADE 6</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organizar o repositório da disciplina</td>
+<td>...</td>
+<td>Github</td>
+<td>09/10/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 13 - Atividade 6 do projeto</em></p>
+<h3 id="47-atividade-7">4.7 ATIVIDADE 7</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sugestão de busca</td>
+<td>...</td>
+<td>a decidir</td>
+<td>06/11/2023</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 14 - Atividade 7 do projeto</em></p>
+<h2 id="5-licoes-aprendidas">5. LIÇÕES APRENDIDAS</h2>
+<h3 id="51-unidade-1">5.1 UNIDADE 1</h3>
+<p>Durante a unidade 1, as atitudes tomadas, levando em consenso com a opinião da maioria do grupo, consistiram em separar os melhores frameworks para lidar com a nossa proposta de projeto, seja na parte do back-end, como na do front-end, também prestando atenção no nível de conhecimento da maioria das pessoas, e suas disponibilidades de poder aprender elementos novos.<br></p>
+<p>Sendo assim, conseguimos concluir que fazer um back-end em rust, utilizando o MeilliSearch, MeilliSearch - SDK,  Actix-web e Actix-rt.
+Por fim, tivemos a escolha do front o qual seria feito através do React junto a CSS, JavaScript e html.<br></p>
+<p>No começo do projeto, nosso objetivo era focar em fazer o motor de busca, e uma interface bem simples, então tomamos essa decisão - sobre quais ferramentas iríamos utilizar - visando a isso.<br></p>
+<p>Em relação aos ciclos de vida de um produto, foi nos apresentado dois: o Scrum e o XP. Ambos são metodologias ágeis que acreditamos beneficiar nosso projeto. Portanto, a metodologia dele será ScrumXP com Kanban.<br></p>
+
+<h2 id="6-proximos-passos">6. PRÓXIMOS PASSOS</h2>
+<h3 id="61-product-backlog">6.1 PRODUCT BACKLOG</h3>
+<h4 id="611-requisitos-funcionais">6.1.1 Requisitos funcionais</h4>
+<ul>
+<li>Login por meio da autenticação do Google </li>
+<li>Possibilidade de favoritar documentos</li>
+</ul>
+<h4 id="612-requisitos-nao-funcionais">6.1.2 Requisitos não funcionais</h4>
+<ul>
+<li>Edição de conta do usuário  </li>
+<li>Login por email </li>
+<li>Filtrar dados da pesquisa</li>
+</ul>
+<h3 id="62-sprint-e-releases">6.2 SPRINT E RELEASES.</h3>
+<h4 id="621-sprint">6.2.1 SPRINT</h4>
+<table>
+<thead>
+<tr>
+<th>Sprint Nº</th>
+<th>Data</th>
+<th>Metas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>28/08/2023 - 25/09/2023</td>
+<td>Levantamento de issues e US’s <br> Levantamento de requisitos <br> Definição de ferramentas</td>
+</tr>
+<tr>
+<td>2</td>
+<td>25/09/2023 - 02/10/2023</td>
+<td>Popular banco de dados <br> Criar parser de textos</td>
+</tr>
+<tr>
+<td></td>
+<td>02/10/2023 - 09/10/2023</td>
+<td>Carregar dados do parser <br> Visualizar documentos na interface</td>
+</tr>
+<tr>
+<td>4</td>
+<td>09/10/2023 - 16/10/2023</td>
+<td>Mostrar os dados de pesquisa</td>
+</tr>
+<tr>
+<td>5</td>
+<td>16/10/2023 - 23/10/2023</td>
+<td>Visualizar erro <br> Entrar pela minha conta na página</td>
+</tr>
+<tr>
+<td>6</td>
+<td>23/10/2023 - 30/10/2023</td>
+<td>Armazenar dados de usuário <br> Filtrar dados de pesquisa</td>
+</tr>
+<tr>
+<td>7</td>
+<td>30/10/2023 - 06/11/2023</td>
+<td>Favoritar documentos</td>
+</tr>
+<tr>
+<td>8</td>
+<td>13/10/2023 - 20/11/2023</td>
+<td>Visualizar miniatura dos documentos favoritados</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela 15 - Detalhamento das Sprints</em></p>
+<h4 id="622">6.2.2</h4>
+<p>Releases são na visão geral são as versões específicas de um software disponibilizadas ao público ou a um grupo seleto de usuários. Cada release pode conter novos recursos, correções de bugs, melhorias de desempenho e outras mudanças.</p>
+
+<table>
+<thead>
+<tr>
+<th>Release Nº</th>
+<th>Data</th>
+<th>Entregas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>25/09/2023 - 30/10/2023</td>
+<td>• Entrega do Back-end responsável pelo funcionamento motor de busca <br> • Entrega do Layout Básico de Interfaces relacionadas ao motor de busca <br> • Entrega funcional isquêmica do Back-end responsável pelo gerenciamento de usuários</td>
+</tr>
+<tr>
+<td>2</td>
+<td>30/10/2023 - 13/11/2023</td>
+<td>• Entrega do Back-end responsável pelo gerenciamento de usuários <br> • Entrega do Front-End mostrando acesso pelo usuário ao site <br> • Entrega da filtragem de documentos otimizada</td>
+</tr>
+<tr>
+<td>3</td>
+<td>13/10/2023 - 27/11/2023</td>
+<td>• Entrega do funcionamento da ação de favoritar documentos <br> • Entrega dos testes unitários e de integração <br> • Entrega da documentação do projeto</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tabela - 16 Detalhamento de Releases que serão feitas pelo grupo</em> </p>
+<h3 id="63-minimum-viable-product-mvp">6.3 MINIMUM VIABLE PRODUCT (MVP)</h3>
+<p>Versão mais simples e enxuta de um produto, empregando o mínimo possível de recursos para entregar a principal proposta de valor da ideia com apenas o fundamental para o funcionamento da aplicação.
+
+Considerando a UnBuscas como plataforma, temos como objetivo mínimo prover um mecanismo para busca que retorne resultados relevantes para o público alvo, os estudantes da universidade. Além disso, a experiência de busca deve ser intuitiva, e o processo eficiente, o que pode ser definido de diferentes formas. A definição escolhida pela equipe foi a de haver uma variedade de formas para o usuário filtrar e encontrar o conteúdo mais relevante. Isso será feito com o uso de filtros e ferramentas de ordenação.</p>
+
+<h2 id="7-referencias">7 REFERÊNCIAS</h2>
+<p>LETÍCIA, M.; PEDRO MIGUEL. <strong>MDS Centauri - Backlog e Critérios</strong>
+de Aceitação. 2023. Disponível em: https://docs.google.com/spreadsheets/d/18qN3aizmMQCIOUuCEOiuYvgYZNmI8NbCw8UrxjjkHCk/edit#gid=600013620.</p>
+<p>AJAX, Ricardo. <strong>Pacote: Mapa de competências: conhecimento geral dos alunos</strong>. In: AJAX, Ricardo. Mapa de competencias. Aprender 3, 30 ago. 2023. Disponível em: https://aprender3.unb.br/course/view.php?id=19389§ion=1. Acesso em: 8 nov. 2023.</p>
+<p>GUEDES, Marylene. <strong>O que é XP - Extreme Programming?.</strong> TreinaWeb, 2020. Disponível em: https://www.treinaweb.com.br/blog/o-que-e-xp-extreme-programming. Acesso em: 09 nov. 2023. </p>
+<p><strong>O que é scrum e como começar: Guia do Scrum: o que é, como funciona e como começar.</strong> atlassian, 2023. Disponível em: https://www.atlassian.com/br/agile/scrum. Acesso em: 9 nov. 2023.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+    
+  </body>
+</html>
