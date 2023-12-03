@@ -30,7 +30,7 @@ passport.use(
             console.log(profile);
             
             db.query(
-                "select * from user where token = ?",
+                "select * from USER where token = ?",
                 [profile.id],
                 (err, user) => {
                     if (err) {
@@ -42,7 +42,7 @@ passport.use(
                     } else {
                         // if user dosen't exist, we are adding the user to database
                         db.query(
-                            "insert into user set email = ?,  userName = ?, token = ?",
+                            "insert into USER set email = ?,  userName = ?, token = ?",
                             [ profile.emails[0].value, profile.displayName, profile.id,],
                             (err, userAdded) => {
                                 if (err) {
@@ -50,7 +50,7 @@ passport.use(
                                     console.log("err dectected");
                                 } else {
                                     db.query(
-                                        "select * from user where token = ?",
+                                        "select * from USER where token = ?",
                                         [profile.id],
                                         (err, user) => {
                                             console.log("Login/Sign in successfully");
@@ -80,8 +80,6 @@ router.get("/google/callback", passport.authenticate("google",), (req, res) => {
         console.log("the use is", req.user[0]); //Just for debugging
         //Creating a unique token using sign method which is provided by JWT, remember the 2nd parameter should be a secret key and that should have atleast length of 20, i have just passed 'rahulnikam' but you should not do the same and this should be kept in environment variable so that no one can see it
         const googleAuthToken = jwt.sign({ googleAuthToken: req.user[0].googleId }, "batataQUENTEQUENTEQUENTEQUEIMOU", { expiresIn: 86400000 })
-        //res.cookie will set a cookie in user's header (i mean in users http header😂)
-        // we are saying that create a cookie with a name of googleAuthToken and we are passing the token that we generated on line no 80, and the 3rd parameter is the expire of that cookie.
         res.cookie("googleAuthToken", googleAuthToken, { expires: new Date(Date.now() + 86400 * 1000), httpOnly: true })
         // we are now redirecting the user to localhost:3000 which is our frontend
         res.redirect("http://localhost:3000/pesquisa")
@@ -94,8 +92,11 @@ router.get("/login/success", (req, res) => {
         res.status(200).json({
             success: true,
             message: "successfull",
-            user: [req.user[0].userName, req.user[0].userEmail, req.user[0].userImg]
+            user: [req.user[0].userName, req.user[0].emails, req.user[0].userImg]
         });
+    }
+    else{
+        console.log("deu ruim");
     }
 });
 
@@ -105,28 +106,6 @@ router.get("/logout", (req, res) => {
         logout: req.user
     })
 });
-
-router.post('/favoritos', (req, res) => {
-
-    const { favoritesId, userToken, documentId } = req.body;
-  
-    // Verifique se o usuário está autenticado, caso contrário, retorne um erro
-    if (!req.isAuthenticated()) {
-      return res.status(401).json({ message: 'Usuário não autenticado.' });
-    }
-  
-    // Lógica para salvar favoritos no banco de dados
-    db.query(
-      'INSERT INTO favorites (userToken, documentId) VALUES (?, ?)',
-      [userToken, documentId],
-      (err, result) => {
-        if (err) {
-          return res.status(500).json({ error: 'Erro ao salvar favorito.' });
-        }
-        return res.status(200).json({ message: 'Favorito salvo com sucesso.' });
-      }
-    );
-  });
 
 
 module.exports = router

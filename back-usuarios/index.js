@@ -26,7 +26,7 @@ db.getConnection((err,connection) => {
 
 app.use('/auth', require('./routers/auth/passport.js'));
 
-app.use('/api/favoritos', require('./routers/auth/passport.js'));
+// app.use('/create_favorite', require('./routers/auth/old_favorites.js'));
 
 // app.use("/",userRoutes);
 

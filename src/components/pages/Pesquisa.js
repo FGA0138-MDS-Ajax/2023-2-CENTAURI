@@ -14,8 +14,9 @@ import lupa from "../img/lupa.svg";
 import onda2 from "../img/Rectangle 22.svg";
 import { useAuth } from './AuthContext';
 import axios from "axios";
+import { useFavoriteContext } from './../../contexts/Favorites.js';
 
-function Pesquisa() {
+function Pesquisa({id}) {
   const [searchResults, setSearchResults] = useState([]);
   const [originalResults, setOriginalResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
@@ -27,15 +28,40 @@ function Pesquisa() {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
-  const [favorite, setFavorite] = useState({
-    favoritesId: '',
-    userToken: '',
-    documentId: ''
-  });
+  const {favorite, addFavorite} = useFavoriteContext();
+  const isFavorite = favorite.some((fav) => fav.id === id)
+//  const [favorite, setFavorite] = useState({
+//     favoritesId: '',
+//     userToken: '',
+//     documentId: ''
+//   });
   const [inputErrorList, setInputErrorList] = useState({});
   const [noResults, setNoResults] = useState(false); 
 
   const { isLoggedIn, logout, user, setUser } = useAuth(); 
+
+  let [userName, setUserName] = useState("");
+  let [userEmail, setUserEmail] = useState("");
+  let [userToken, setUserToken] = useState("");
+
+  useEffect(() => {
+    axios.get("http://localhost:8800/auth/login/success", {
+      withCredentials: true,
+    })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log("testee", res.data);
+          setUserName(res.data.user[0]);
+          setUserEmail(res.data.user[0]);
+          setUserToken(res.data.user[0]);
+        } else {
+          console.log("No status");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
@@ -139,6 +165,13 @@ function Pesquisa() {
   };
 
   const handleFavoriteClick = (documentId) => {
+    addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
+  };
+
+ {/*} const handleFavoriteClick = (documentId) => {
+    console.log(documentId);
+    console.log(user.userName);
+    console.log(userEmail);
     setFavorite({
       userToken: user.token,
       documentId: documentId,
@@ -148,12 +181,12 @@ function Pesquisa() {
 
   const saveFavorite = (documentId) => {
     const data = {
-      favoritesId: user.id,
+      favoritesId: "",
       userToken: user.token,
       documentId: documentId, // Certifique-se de passar o ID do documento aqui
     };
 
-    axios.post('http://localhost:3000/favoritos', data)
+    axios.post('http://localhost:3000/create_favorite', data)
       .then(res => {
         alert(res.data);
       })
@@ -162,7 +195,7 @@ function Pesquisa() {
           console.error(error.response.data.errors);
         }
       });
-  };
+  };*/}
 
   const handleLogoutSucess = () => {
     logout();
@@ -274,7 +307,9 @@ function Pesquisa() {
                 {isLoggedIn && (
                   <div
                     className={styles.botaoFav}
+                    /*onClick={() => handleFavoriteClick(resource.id)}*/
                     onClick={() => handleFavoriteClick(resource.id)}
+              
                   >
                     <img src={coracao} className={styles.coracao} />
                     <p className={styles.coracaoText}>Salve como seu favorito</p>
@@ -284,7 +319,7 @@ function Pesquisa() {
             )}
             <img src={unb} className={styles.documentImage} alt="Document" />
             <div className={styles.documentInfo}>
-              <h3 className={styles.titulo}>{resource.title}</h3>
+              <h3 className={styles.titulo}>{resource.id}, {resource.title}</h3>
               <p>{resource.content.substring(0, 400)}...</p>
             </div>
           </div>

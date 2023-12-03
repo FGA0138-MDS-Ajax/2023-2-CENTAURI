@@ -23,11 +23,13 @@ function Login() {
   useEffect(() => {
     Axios.get("http://localhost:8800/auth/login/success", {
       withCredentials: true,
-    })
+        })
       .then((res) => {
         if (res.status === 200) {
+          
           // Chame a função login do contexto para salvar as informações do usuário
-          login({ name: res.data.user[0], email: res.data.user[1], img: res.data.user[2] });
+          login({ name: res.data.user[0], email: res.data.user[1]});
+          // console.log(res.data.user[0], res.data.user[1])
           // Redirecione para a página desejada após o login
           // navigate('/pesquisa');
         } else {

@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.43, for Win64 (x86_64)
 --
--- Host: localhost    Database: login
+-- Host: 127.0.0.1    Database: login
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	5.5.5-10.6.12-MariaDB-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,28 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `USER`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `USER`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `token` varchar(100) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+CREATE TABLE `USER` (
+  `email` varchar(255) DEFAULT NULL,
+  `userName` varchar(255) DEFAULT NULL,
+  `token` varchar(255) NOT NULL,
   PRIMARY KEY (`token`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `USER`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('110808832406441007243','Mariana Letícia','mariana.leticia05@gmail.com'),('107920361663602221087','João Victor','julianowwk@gmail.com'),('101525055282353583091','teste','testetesteeeeeeeeeee0@gmail.com');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `USER` WRITE;
+/*!40000 ALTER TABLE `USER` DISABLE KEYS */;
+INSERT INTO `USER` VALUES ('mariana_leticia@eletronjun.com.br','Mariana Leticia','108988451398232867855'),('mariana.leticia05@gmail.com','Mariana Letícia','110808832406441007243');
+/*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-18 19:55:36
+-- Dump completed on 2023-12-03 13:34:49
