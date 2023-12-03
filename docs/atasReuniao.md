@@ -1,3 +1,4 @@
+
 Reunião 08/09/2023
 participantes: Renan, André, Thomas, Mariana, Felipe, Pedro(Danni não pode, e João não deu notícia)
 O que foi discutido: 
