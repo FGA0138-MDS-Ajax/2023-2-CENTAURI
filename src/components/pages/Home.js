@@ -14,7 +14,7 @@ import bolinha3 from '../img/Bolinha3.svg';
 import Plus from '../Plus.js';
 
 
-const { MeiliSearch } = require('meilisearch')
+const { MeiliSearch } = require('meilisearch');
 
 
 function Home(){
