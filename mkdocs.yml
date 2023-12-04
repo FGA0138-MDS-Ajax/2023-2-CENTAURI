@@ -1,9 +1,10 @@
-site_name: UnBuscas 
+site_name: Centauri | UnBuscas 
 
 theme:
   name: material
   language: "pt"
   logo: assets/logo.svg
+  favicon: assets/logo.png
   palette:
     primary: deep purple
     accent: indigo
@@ -11,8 +12,9 @@ theme:
     - navigation.tabs
 
 nav:
-- Inicio: index.md
-- Escopo: Documento de escopo do Produto.md
-- Visão: Visão do Produto e do Projeto - Centauri Versao-2.md
-- Arquitetura: Documento de Arquitetura - Centauri - MDS-2023.2.md
-- Atas de Reunião: atasReuniao.md
+  - Inicio: index.md
+  - Documento de Escopo: Documento-de-escopo-do-Produto.md
+  - Documento de Visão: Visão-do-Produto-e-do-Projeto-Centauri-Versao-2.md
+  - Documento de Arquitetura: Documento-de-Arquitetura-Centauri-MDS-2023.2.md
+  - Atas de Reunião: atasReuniao.md
+
