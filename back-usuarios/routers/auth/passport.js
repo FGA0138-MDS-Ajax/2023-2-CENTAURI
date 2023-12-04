@@ -15,6 +15,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 })
 
+
+
 passport.use(
     new googleStrategy(
         {
@@ -30,7 +32,7 @@ passport.use(
             console.log(profile);
             
             db.query(
-                "select * from user where token = ?",
+                "select * from USER where token = ?",
                 [profile.id],
                 (err, user) => {
                     if (err) {
@@ -42,15 +44,17 @@ passport.use(
                     } else {
                         // if user dosen't exist, we are adding the user to database
                         db.query(
-                            "insert into user set email = ?,  userName = ?, token = ?",
-                            [ profile.emails[0].value, profile.displayName, profile.id,],
+                            "insert into USER set email = ?,  userName = ?, token = ?",
+                            [ profile.emails[0].value, profile.displayName, profile.id],
                             (err, userAdded) => {
                                 if (err) {
-                                    return cb(err, false);
+                                    console.log(userAdded);
                                     console.log("err dectected");
+                                    return cb(err, false);
                                 } else {
+                                    console.log(userAdded);
                                     db.query(
-                                        "select * from user where token = ?",
+                                        "select * from USER where token = ?",
                                         [profile.id],
                                         (err, user) => {
                                             console.log("Login/Sign in successfully");
@@ -80,11 +84,12 @@ router.get("/google/callback", passport.authenticate("google",), (req, res) => {
         console.log("the use is", req.user[0]); //Just for debugging
         //Creating a unique token using sign method which is provided by JWT, remember the 2nd parameter should be a secret key and that should have atleast length of 20, i have just passed 'rahulnikam' but you should not do the same and this should be kept in environment variable so that no one can see it
         const googleAuthToken = jwt.sign({ googleAuthToken: req.user[0].googleId }, "batataQUENTEQUENTEQUENTEQUEIMOU", { expiresIn: 86400000 })
-        //res.cookie will set a cookie in user's header (i mean in users http header😂)
-        // we are saying that create a cookie with a name of googleAuthToken and we are passing the token that we generated on line no 80, and the 3rd parameter is the expire of that cookie.
         res.cookie("googleAuthToken", googleAuthToken, { expires: new Date(Date.now() + 86400 * 1000), httpOnly: true })
         // we are now redirecting the user to localhost:3000 which is our frontend
-        res.redirect("http://localhost:3000")
+        console.log("user exists", googleAuthToken);
+        res.redirect("http://localhost:3000/pesquisa")
+    }else{
+        console.log("user does not exists");
     }
 });
 
@@ -94,8 +99,11 @@ router.get("/login/success", (req, res) => {
         res.status(200).json({
             success: true,
             message: "successfull",
-            user: [req.user[0].userName, req.user[0].userEmail, req.user[0].userImg]
+            user: [req.user[0].userName, req.user[0].email, req.user[0].token]
         });
+    }
+    else{
+        console.log("deu ruim");
     }
 });
 
@@ -106,5 +114,5 @@ router.get("/logout", (req, res) => {
     })
 });
 
-module.exports = router
 
+module.exports = router

@@ -3,10 +3,6 @@
     src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
   }
 
-
-
-
-
 .login_container{
     background-color: #F0EFFF;
     background-size: cover;
@@ -33,6 +29,11 @@
     cursor: pointer;
     top: 170px;
     left: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /* .botao_google {

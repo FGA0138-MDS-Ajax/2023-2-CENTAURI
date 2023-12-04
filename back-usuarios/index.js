@@ -1,9 +1,11 @@
-const express = require("express")
+const express = require("express"), bodyParser = require('body-parser');
 const cors = require("cors")
 const db = require("./db.js")
 const cookieSession = require("cookie-session")
 const passport = require("passport")
+const pool = require("./db.js");
 require("dotenv").config()
+const util = require('util');
 
 const app =  express();
 
@@ -26,9 +28,69 @@ db.getConnection((err,connection) => {
 
 app.use('/auth', require('./routers/auth/passport.js'));
 
-// app.use("/",userRoutes);
+app.use(bodyParser.json());
+
+// app.use('/create_favorite', require('./routers/auth/old_favorites.js'));
+
+app.post('/create_favorite', async (req, res) => {
+    try {
+      const { favoritesId, userToken, documentId } = req.body;
+      console.log("req.body criar favorito", req.body);
+      // Validate input
+      if (!favoritesId || !userToken || !documentId) {
+        return res.status(300).json({ success: false, message: 'dados insuficientes' });
+      } else {
+        console.log("dados de favoritos salvos", req.body);
+      }
+  
+      await createFavorite(pool, favoritesId, userToken, documentId);
+  
+      res.json({ success: true, message: 'Favorite added successfully!' });
+
+    } catch (error) {
+        console.log("erro do post de favoritos", req.body);
+      console.error('Error:', error.message);
+      res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
+    
+  });
+
+// // app.use("/",userRoutes);
+// async function createFavorite(pool, favoritesId, userToken, documentId) {
+//     const result = await pool.execute(
+//       'INSERT INTO favorites (favoritesId, userToken, documentId) VALUES (?, ?, ?)',
+//       [favoritesId, userToken, documentId]
+//     );
+  
+//     if (result[0].affectedRows > 0) {
+//       console.log('Favorite added successfully!');
+//     } else {
+//       console.log('Failed to add favorite.');
+//       throw new Error('Failed to add favorite.');
+//     }
+// }
+async function createFavorite(pool, favoritesId, userToken, documentId) {
+    const query = util.promisify(pool.query).bind(pool);
+  
+    try {
+      const result = await query(
+        'INSERT INTO favorites (favoritesId, userToken, documentId) VALUES (?, ?, ?)',
+        [favoritesId, userToken, documentId]
+      );
+  
+      if (result.affectedRows > 0) {
+        console.log('Favorite added successfully!');
+      } else {
+        console.log('Failed to add favorite.');
+        throw new Error('Failed to add favorite.');
+      }
+    } catch (error) {
+      console.error('Error adding favorite:', error.message);
+      throw error;
+    }
+}
 
 app.listen(PORT, () =>{
-    console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}\n`)
 })
 

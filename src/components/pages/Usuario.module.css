@@ -7,15 +7,20 @@
     max-width: 100%;
     margin: 0 auto; 
 }
-.imagem{
-    left: 0%;
-    top: -2%;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
+
+.userPage{
+    display: flex;
+    flex-direction: column;
 }
 
-.search_bar{
+.containerSuperior{
+    display: flex;
+    width: 100%;
+    background-image: url(../img/topoPagina.svg);
+}
+
+
+/* .search_bar{
     width: 50%;
     height: 46px;
     margin-top: 30px;
@@ -55,7 +60,7 @@
 }
 .search_bar button:hover{
     cursor: pointer;
-}
+} */
 
 ::placeholder{
     color: #929292;
@@ -65,21 +70,29 @@
 }
 
 .sair{
-    font-size: 20px;
-    left: 93%;
-    top: 4%;
-    font-family: Poppins, sans-serif;
-    position: absolute;
-    z-index: 2;
+    
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 2px 0px rgba(77, 71, 195, 0.40);
 }
 
-.retangulo {
-    position: absolute;
+.sair:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.containerPrincipal{
+    flex-direction: column;
+}
+
+.userPanel {
+    background-image: url(../img/RetanguloUsuario.svg);
     width: 1367px;
     height: 309px;
-    top: 400px;
-    left: 270px;
 }
+
 
 .retanguloBranco{
     position: absolute;

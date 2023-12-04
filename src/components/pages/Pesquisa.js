@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from "./Pesquisa.module.css";
 import { MeiliSearch } from 'meilisearch';
 import onda from "../img/Rectangle 8.svg";
@@ -6,13 +7,17 @@ import logo from "../img/logo.svg";
 import filtro from "../img/Filter Button.svg";
 import unb from "../img/pdf1.svg";
 import bolinhas from "../img/bolinhas.svg";
-import download from "../img/Download.svg"
-import coracao from "../img/Coracao.svg"
-import login from "../img/Login.svg"
-import lupa from "../img/lupa.svg"
-import onda2 from "../img/Rectangle 22.svg"
+import download from "../img/Download.svg";
+import coracao from "../img/Coracao.svg";
+import login from "../img/Login.svg";
+import lupa from "../img/lupa.svg";
+import onda2 from "../img/Rectangle 22.svg";
+import { useAuth } from '../contexts/AuthContext';
+import axios from "axios";
+// import { useFavoriteContext } from '../contexts/Favorites.js';
 
-function Pesquisa() {
+
+function Pesquisa({id}) {
   const [searchResults, setSearchResults] = useState([]);
   const [originalResults, setOriginalResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
@@ -22,12 +27,70 @@ function Pesquisa() {
   const [periodDropdownOpen, setPeriodDropdownOpen] = useState(false);
   const [selectedType, setSelectedType] = useState('');
   const [filtersVisible, setFiltersVisible] = useState(false);
+  const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
+  //const {favorite, addFavorite} = useFavoriteContext();
+  // const isFavorite = favorite.some((fav) => fav.id === id)
+  const [favorite, setFavorite] = useState({
+      favoritesId: '',
+      userToken: '',
+      documentId: ''
+  });
+  const [inputErrorList, setInputErrorList] = useState({});
+  const [noResults, setNoResults] = useState(false); 
+
+  const { isLoggedIn, logout, user, setUser } = useAuth(); 
+
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearchQuery = queryParams.get('query') || '';
+
+
+  const paginainicial = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    if (initialSearchQuery) {
+      // Perform the initial search with the query from the URL
+      searchDocuments(initialSearchQuery);
+    }
+  }, [initialSearchQuery]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8800/auth/login/success", {
+      withCredentials: true,
+    })
+      .then((res) => {
+        if (res.status == 200) {
+          console.log("testee", res.data);
+          console.log(res.data.user[0]);
+          console.log(res.data.user[1]);
+          console.log(res.data.user[2]);
+
+
+          setUserName( res.data.user[0]);
+          setUserEmail(res.data.user[1]);
+          setUserToken(res.data.user[2]);
+        } else {
+          console.log("No status");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+
 
   const client = new MeiliSearch({
     host: 'http://127.0.0.1:7700',
     apiKey: 'aSampleMasterKey',
   });
+
+  const navigate = useNavigate();
 
   const searchDocuments = async (query) => {
     client
@@ -38,6 +101,13 @@ function Pesquisa() {
         setSearchResults(hits);
         setOriginalResults(hits);
         setFilteredResults(hits);
+
+        // Adicione a lógica para verificar se há resultados
+        if (hits.length === 0) {
+          setNoResults(true);
+        } else {
+          setNoResults(false);
+        }
       });
   };
 
@@ -105,6 +175,7 @@ function Pesquisa() {
 
   const handleToggleFilters = () => {
     setFiltersVisible(!filtersVisible);
+    setFilterControlsVisible(!filterControlsVisible);
   };
 
   const handleToggleBolinhaMenu = (documentId) => {
@@ -115,94 +186,180 @@ function Pesquisa() {
     window.open(resource.link, '_blank');
   };
 
+  // const handleFavoriteClick = (documentId) => {
+  //   addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
+  // };
+  function getRandom() {
+    return Math.random();
+  }
+
+  async function saveFavorite (documentId){
+    setFavorite({
+      userToken: user.token,
+      documentId: documentId,
+    });
+    
+    // const data = {
+    //   favoritesId: "1",
+    //   userToken: userToken,
+    //   documentId: documentId
+    // };
+    // console.log(data);
+    await axios.post('http://localhost:8800/create_favorite', {
+      favoritesId: getRandom(4),
+      userToken: userToken,
+      documentId: documentId
+    }, {headers: {
+      'Content-Type': 'application/json'
+      }})
+      .then(res => {
+        alert("documento adicionado com sucesso!");
+        console.log("deu certo?");
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 404 || error.response.status === 500) {
+          alert("documento já foi anteriormente adicionado");
+          console.error("não fez a requisição " + error.response);
+          console.log(error.config.data);
+        }else{
+          console.log(error.config.data);
+          console.log(error);
+        }
+      });
+  
+  };
+
+  const handleLogoutSucess = () => {
+    logout();
+  };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, [setUser]);
+
   return (
     <div className={styles.search_container}>
+      {noResults && navigate('/error')}
+  
       <div>
-        <img src={onda} className={styles.onda} alt="onda"></img>
-        <img src={onda2} className={styles.onda2} alt="onda"></img>
-        <img src={logo} className={styles.logo} alt="logo"></img>
-        <img src={filtro} className={styles.filtro} alt="filtro" onClick={handleToggleFilters}></img>
-        <div>
-        <img src={login} className={styles.login} alt="login"></img>
-        <p className={styles.profile}>Your username</p>
-        </div>
+        <img src={onda} className={styles.onda} alt="onda" />
+        <img src={onda2} className={styles.onda2} alt="onda" />
+        <img src={logo} className={styles.logo} alt="logo" onClick={paginainicial}/>
+        {!isLoggedIn && (
+          <div className={styles.button_login_container}>
+            <div>
+              <button className={styles.botaoLogin} onClick={() => navigate('/login')}>
+                LOGIN
+              </button>
+            </div>
+          </div>
+        )}
+  
+        {isLoggedIn && (
+          <div>
+            <button className={styles.botaologout} onClick={handleLogoutSucess}>
+              Logout
+            </button>
+            <Link to="/usuario">
+              <div>
+                <img src={login} className={styles.login} alt="login" />
+                <p className={styles.profile}>{user?.name}</p>
+              </div>
+            </Link>
+          </div>
+        )}
+        <img src={filtro} className={styles.filtro} alt="filtro" onClick={handleToggleFilters} />
       </div>
-
+  
       <form className={styles.search_bar}>
         <input
           type="text"
           placeholder="Pesquise um documento aqui"
           onChange={(e) => searchDocuments(e.target.value)}
         />
-         <button type="submit" className={styles.botaoPesquisa}><img src={lupa} alt="botão de pesquisar"></img></button>
+        <button type="submit" className={styles.botaoPesquisa}>
+          <img src={lupa} alt="botão de pesquisar" />
+        </button>
       </form>
-
-      {filtersVisible && (
+  
+      {filterControlsVisible && (
         <div>
           <div className={styles.sortingFilteringControls}>
-            <select className={styles.relevance} value={sortOption} onChange={(e) => handleSortOptionChange(e.target.value)}>
+            <select
+              className={styles.relevance}
+              onChange={(e) => handleSortOptionChange(e.target.value)}
+            >
               <option value="relevance">Relevância</option>
               <option value="newest">Mais recentes</option>
               <option value="oldest">Mais antigos</option>
             </select>
-
+  
             <div className={styles.periodDropdown}>
-              <button className={styles.periodo} type="button" onClick={handleTogglePeriodDropdown}>
+              <button
+                className={styles.periodo}
+                type="button"
+                onClick={handleTogglePeriodDropdown}
+              >
                 Período
               </button>
               {periodDropdownOpen && (
                 <div className={styles.periodDropdownContent}>
                   <label>Data Inicio:</label>
-                  <input type="date" value={startDate} onChange={(e) => handleStartDateChange(e.target.value)} />
-
+                  <input type="date" onChange={(e) => handleStartDateChange(e.target.value)} />
+  
                   <label>Data Final:</label>
-                  <input type="date" value={endDate} onChange={(e) => handleEndDateChange(e.target.value)} />
+                  <input type="date" onChange={(e) => handleEndDateChange(e.target.value)} />
                 </div>
               )}
             </div>
-
-            {/* <div className={styles.todos1}>
-              <select className={styles.todos} value={selectedType} onChange={(e) => handleTypeChange(e.target.value)}>
-                <option value="">Todos</option>
-                <option value="Normativo">Normativo</option>
-                <option value="Deliberativo">Deliberativo</option>
-              </select>
-              </div> */}
           </div>
         </div>
       )}
-
+  
       <div className={styles.grid}>
         {filteredResults.map((resource) => (
           <div key={resource.id} className={styles.documentContainer}>
-            <img src={bolinhas} className={styles.bolinha} onClick={() => handleToggleBolinhaMenu(resource.id)}></img>
+            <img
+              src={bolinhas}
+              className={styles.bolinha}
+              onClick={() => handleToggleBolinhaMenu(resource.id)}
+            />
             {selectedDocumentId === resource.id && (
               <div className={styles.bolinhaMenu}>
-                <div 
-                    className={styles.downloadAll}
-                    onClick={() => handleDownloadClick(resource)}>
-                  <img
-                    src={download}
-                  ></img>
+                <div
+                  className={styles.downloadAll}
+                  onClick={() => handleDownloadClick(resource)}
+                >
+                  <img src={download} alt="Download" />
                   <p className={styles.downloadText}>Download</p>
                 </div>
-                <div>
-                  <img src={coracao} className={styles.coracao}></img>
-                  <p className={styles.coracaoText}>Salve como seu favorito</p>
-                </div>
+                {isLoggedIn && (
+                  <div
+                    className={styles.botaoFav}
+                    /*onClick={() => handleFavoriteClick(resource.id)}*/
+                    onClick={() => saveFavorite(resource.id)}
+              
+                  >
+                    <img src={coracao} className={styles.coracao} />
+                    <p className={styles.coracaoText}>Salve como seu favorito</p>
+                  </div>
+                )}
               </div>
             )}
-            <img src={unb} className={styles.documentImage} alt="Document"></img>
+            <img src={unb} className={styles.documentImage} alt="Document" />
             <div className={styles.documentInfo}>
               <h3 className={styles.titulo}>{resource.title}</h3>
               <p>{resource.content.substring(0, 400)}...</p>
-              
             </div>
           </div>
         ))}
       </div>
     </div>
-  );
+  );      
 }
 
 export default Pesquisa;
+
