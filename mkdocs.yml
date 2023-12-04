@@ -3,8 +3,7 @@ site_name: Centauri | UnBuscas
 theme:
   name: material
   language: "pt"
-  logo: assets/logo.svg
-  favicon: assets/logo.png
+  logo: assets/logo.png
   palette:
     primary: deep purple
     accent: indigo
