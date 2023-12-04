@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -11,6 +12,18 @@ import bolinha1 from '../img/Bolinha 1.svg';
 import bolinha2 from '../img/Bolinha 2.svg';
 import bolinha3 from '../img/Bolinha3.svg';
 import Plus from '../Plus.js';
+=======
+import { useState } from 'react'
+import styles from "./Home.module.css"
+import botaoPesquisa from '../img/botaoPesquisa.svg'
+import logo from "../img/logo.svg"
+import menina from "../img/meninaNotebook.svg"
+import bolinha1 from "../img/Bolinha 1.svg"
+import bolinha2 from "../img/Bolinha 2.svg"
+import bolinha3 from "../img/Bolinha3.svg"
+import Plus from "../componentes/Plus"
+const { MeiliSearch } = require('meilisearch')
+>>>>>>> 1484f8c9aea04490c2bea067776371c61c94723a
 
 
 function Home(){

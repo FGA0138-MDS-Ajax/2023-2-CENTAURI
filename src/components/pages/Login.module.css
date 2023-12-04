@@ -61,11 +61,13 @@
     font-family: Poppins, serif;
     top: 279px;
     left: 1200px;
+    display: flex;
 }
 
 .google_container h1 {
     font-size: 32px;
     text-align: center;
+    display: flex;
 }
 
 
@@ -87,6 +89,7 @@
     position: absolute;
     width: 920px;
     height: 1035px;
+    display: flex;
 }
 .ondablue{
     top: 0px;
@@ -94,25 +97,28 @@
     position: absolute;
     width: 920px;
     height: 1035px;
+    display: flex;
 }
 
 .logo {
     position: absolute;
     top: 50px;
     left: 50px;
-
+    display: flex;
 }
 
 .Menino {
     position: absolute;
     top: 150px;
     left: 50px;
+    display: flex;
 }
 
 .g {
     position: absolute;
     top: 190px;
     left: 70px;
+    display: flex;
 }
 
 .dadosUser{
@@ -122,9 +128,19 @@
 
 .button_login{
     width: 40px;
+<<<<<<< HEAD
 }
 
 .c1{
     margin-left: 60%;
+=======
+    display: flex;
+}
+
+.c1{
+    position: absolute;
+    left: 1300px;
+    top: 400px;
+>>>>>>> 1484f8c9aea04490c2bea067776371c61c94723a
     display: flexbox;
 }
