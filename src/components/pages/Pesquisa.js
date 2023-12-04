@@ -189,6 +189,9 @@ function Pesquisa({id}) {
   // const handleFavoriteClick = (documentId) => {
   //   addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
   // };
+  function getRandom() {
+    return Math.random();
+  }
 
   async function saveFavorite (documentId){
     setFavorite({
@@ -203,18 +206,19 @@ function Pesquisa({id}) {
     // };
     // console.log(data);
     await axios.post('http://localhost:8800/create_favorite', {
-      favoritesId: "2",
+      favoritesId: getRandom(4),
       userToken: userToken,
       documentId: documentId
     }, {headers: {
       'Content-Type': 'application/json'
       }})
       .then(res => {
-        alert(res.data);
+        alert("documento adicionado com sucesso!");
         console.log("deu certo?");
       })
       .catch(error => {
         if (error.response && error.response.status === 404 || error.response.status === 500) {
+          alert("documento já foi anteriormente adicionado");
           console.error("não fez a requisição " + error.response);
           console.log(error.config.data);
         }else{
