@@ -3,10 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { MeiliSearch } from 'meilisearch';
 import styles from './Home.module.css';
-
 import botaoPesquisa from '../img/botaoPesquisa.svg';
 import logo from '../img/logo.svg';
-import login from "../img/Login.svg";
+import login from '../img/Login.svg'
 import menina from '../img/meninaNotebook.svg';
 import bolinha1 from '../img/Bolinha 1.svg';
 import bolinha2 from '../img/Bolinha 2.svg';
@@ -21,6 +20,16 @@ function Home(){
       apiKey: 'masterKey',
     })
     const navigate = useNavigate();
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+      
+        // Obtém o valor da barra de pesquisa corretamente
+        const searchQuery = e.target.querySelector('input[type="text"]').value || '';
+      
+        // Navega para a página de pesquisa com o parâmetro de consulta
+        navigate(`/pesquisa?query=${encodeURIComponent(searchQuery)}`);
+    };
 
     const searchDocuments = async (e)=> {
         client
@@ -60,7 +69,7 @@ function Home(){
 
                 </div>
                 <div>
-                    <form className={styles.search_bar}>
+                    <form className={styles.search_bar}  onSubmit={handleSearchSubmit}>
                         <input type="text" placeholder="Faça sua pesquisa"/>
                         <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="botão de pesquisar"></img></button>
                     </form>
@@ -115,4 +124,4 @@ function Home(){
     )
 }
 
-export default Home;
+export default Home

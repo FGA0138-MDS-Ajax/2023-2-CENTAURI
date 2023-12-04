@@ -45,10 +45,21 @@ function Pesquisa({id}) {
   const [userEmail, setUserEmail] = useState("");
   const [userToken, setUserToken] = useState("");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearchQuery = queryParams.get('query') || '';
+
 
   const paginainicial = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    if (initialSearchQuery) {
+      // Perform the initial search with the query from the URL
+      searchDocuments(initialSearchQuery);
+    }
+  }, [initialSearchQuery]);
 
   useEffect(() => {
     axios.get("http://localhost:8800/auth/login/success", {
@@ -347,3 +358,4 @@ function Pesquisa({id}) {
 }
 
 export default Pesquisa;
+

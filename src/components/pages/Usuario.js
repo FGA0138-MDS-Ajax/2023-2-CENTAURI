@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./Usuario.module.css";
-import topo from "../img/topoPagina.svg";
-import retangulo from "../img/RetanguloUsuario.svg";
 import retanguloBranco from "../img/RetanguloUsuarioB.svg";
 import menina from "../img/meninaUsuario.svg";
 import estrela from "../img/estrela.svg";
@@ -66,31 +64,35 @@ function Usuario() {
   };
 
   return (
-    <div>
+    <body className="before-login-body">
       {isLoggedIn ? (
-        <div>
-          <button className={styles.sair} onClick={handleLogout}>Sair da conta</button>
-          <div>
-            <form action="" className={styles.search_bar}>
-              <input type="text" placeholder="Faça sua pesquisa" />
-              <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="Ícone de pesquisa" /></button>
-            </form>
-            <img src={topo} className={styles.imagem} alt="Imagem de topo"></img>
-            <img src={retangulo} className={styles.retangulo} alt="Retângulo"></img>
-            <h1 className={styles.ola}>Olá, {user?.name}</h1>
-            <img src={retanguloBranco} className={styles.retanguloBranco} alt="Retângulo branco"></img>
-            <p className={styles.nome}>Nome: {user?.name}</p>
-            <p className={styles.email}>Email: {user?.email}</p>
-            {console.log("Objeto do Usuário:", user)}
+        <body className={styles.userPage} alt="logged-body">
+          <div className={styles.containerSuperior} alt="superior-container">
+            <button className={styles.sair} onClick={handleLogout}>Sair da conta</button>
+            {/* <form action="" className={styles.search_bar}>
+                <input type="text" placeholder="Faça sua pesquisa" />
+                <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="Ícone de pesquisa" /></button>
+            </form> */}
+          </div>
+          <div className={styles.containerPrincipal} alt="main-container">
+            <div alt="user-info-container">
+              <div className={styles.userPanel} alt="user-panel">
+                <h1 className={styles.ola}>Olá, {user?.name}</h1>
+              </div>
+              
+              <img src={retanguloBranco} className={styles.retanguloBranco} alt="Retângulo branco"></img>
+                <p className={styles.nome}>Nome: {user?.name}</p>
+                <p className={styles.email}>Email: {user?.email}</p>
+            </div>
             <img src={menina} className={styles.menina} alt="Desenho de uma menina"></img>
             <img src={onda} className={styles.onda} alt="Fundo com uma onda"></img>
             <div className={styles.onda}>
               <img src={estrela} className={styles.estrela} alt="Estrela para favoritar itens"></img>
             </div>
           </div>
-        </div>
+        </body>
       ) : null}
-    </div>
+    </body>
   );
 }
 
