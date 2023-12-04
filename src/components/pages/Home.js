@@ -13,10 +13,6 @@ import bolinha2 from '../img/Bolinha 2.svg';
 import bolinha3 from '../img/Bolinha3.svg';
 import Plus from '../Plus.js';
 
-
-const { MeiliSearch } = require('meilisearch');
-
-
 function Home(){
     const [searchResults, setSearchResults] = useState([]);
     const { isLoggedIn, logout, user, setUser } = useAuth(); 
