@@ -3,10 +3,6 @@
     src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
   }
 
-
-
-
-
 .login_container{
     background-color: #F0EFFF;
     background-size: cover;
@@ -128,12 +124,6 @@
 
 .button_login{
     width: 40px;
-<<<<<<< HEAD
-}
-
-.c1{
-    margin-left: 60%;
-=======
     display: flex;
 }
 
@@ -141,6 +131,5 @@
     position: absolute;
     left: 1300px;
     top: 400px;
->>>>>>> 1484f8c9aea04490c2bea067776371c61c94723a
     display: flexbox;
 }
