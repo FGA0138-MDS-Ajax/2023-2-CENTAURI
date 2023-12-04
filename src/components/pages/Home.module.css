@@ -69,41 +69,6 @@
 }
 
 
-.botaologout{
-    top:80px;
-    right: 150px;
-    width: 140px;
-    height: 30px;
-    position: absolute;
-    /* display: flexbox; */
-    justify-content: right;
-    /* align-items: center; */
-    background-color: #00305b;
-    color: #FFFFFF;
-    font-family: Poppins, serif;
-    border-radius: 15px;
-    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
-}
-
-.botaologout:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.login{
-    right: 16%;
-    top:35px;
-    position: absolute;
-}
-
-.profile{
-    font-family: Poppins, serif;
-    font-size: 20px;
-    right: 5%;
-    position: absolute;
-    top: 30px;
-}
-
 .logo_container{
     margin-top: 200px;
     margin-bottom: 50px;
@@ -162,6 +127,7 @@
     color: #FFFFFF;
     font-family: Poppins, serif;
     border-radius: 15px;
+
     box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
 }
 
@@ -170,7 +136,11 @@
     cursor: pointer;
 }
 
+.plus{
+padding-top: 6vh;
+justify-content: center;
 
+}
 
 .sobreUnBusca_container {
     display: flex;
@@ -179,13 +149,42 @@
     background-image: url(../img/Rectangle9.svg);
     background-position-x: center;
     width: 100%;
-    height: 78vh;
+    height: 150vh;
     max-height: 800px;
 }
 .sobreUnBusca_container>div {
     display: flexbox;
 }
 
+.facilidades_container {
+flex-direction: column;
+display: flex;
+width: 100%;
+height: 90vh;
+max-height: 800px;
+}
+
+
+.facilidades_titulo{
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    align-items: center;
+
+}
+.facilidades_titulo h1 {
+    text-align: left;
+    padding-left: 18vh;
+    width: 100%;
+    font-family: Poppins, serif;
+    font-size: 40px;   
+}
+.bolinhas{
+width: 100%;
+justify-content: space-between;
+display: flex;
+justify-items: center;
+}
 
 
 .menina_container {
@@ -218,6 +217,56 @@
     font-size: 20px;   
 }
 
+.texto3{
+    padding-top: 3vh;
+    font-family: Poppins, serif;
+    font-size: 20px;   
+    width: 25%;
+    text-align: center;
+}
+.titulo3{
+    padding-top: 3vh;
+    font-family: Poppins, serif;
+    font-size: 30px;   
+    width: 25%;
+    text-align: center;
+}
+
+.botaologout{
+    top:80px;
+    right: 150px;
+    width: 140px;
+    height: 30px;
+    position: absolute;
+    /* display: flexbox; */
+    justify-content: right;
+    /* align-items: center; */
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
+}
+
+.botaologout:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.login{
+    right: 16%;
+    top:35px;
+    position: absolute;
+}
+
+.profile{
+    font-family: Poppins, serif;
+    font-size: 20px;
+    right: 5%;
+    position: absolute;
+    top: 30px;
+}
+
 @media (max-width: 560px) {
     .sobreUnBusca_container {
         display: inline-block;
@@ -227,6 +276,14 @@
         height: 2100px;
         padding-top: 100px;
     }
+    .facilidades_container {
+        flex-direction: column;
+        display: inline-block;
+        width: 100%;
+        height: 90vh;
+        }
+        
+
     .botao_login {
         display: flex;
         justify-content: center;
@@ -252,5 +309,13 @@
     .texto2{
         font-size: 15px;
     }
-    
+    .texto3{
+
+        font-size: 15px;   
+     
+    }
+    .titulo3{
+        font-size: 15px;   
+
+    }
 }

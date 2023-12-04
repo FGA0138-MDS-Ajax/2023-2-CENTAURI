@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import logo from "../img/logo.svg";
 import menino from "../img/Menino com celular.svg";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from './AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import Axios from "axios";
 import React from "react";
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
@@ -23,20 +23,18 @@ function Login() {
   useEffect(() => {
     Axios.get("http://localhost:8800/auth/login/success", {
       withCredentials: true,
-        })
-      .then((res) => {
-        if (res.status === 200) {
-          
-          // Chame a função login do contexto para salvar as informações do usuário
-          login({ name: res.data.user[0], email: res.data.user[1]});
-          // console.log(res.data.user[0], res.data.user[1])
-          // Redirecione para a página desejada após o login
-          // navigate('/pesquisa');
-        } else {
-          console.log("No status");
-        }
-      })
-      .catch((err) => console.log(err));
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        // Chame a função login do contexto para salvar as informações do usuário
+        login({ name: res.data.user[0], email: res.data.user[1] });
+        // Redirecione para a página desejada após o login
+        navigate('/pesquisa');
+      } else {
+        console.log("No status");
+      }
+    })
+    .catch((err) => console.log(err));
   }, [login, navigate]);
 
 

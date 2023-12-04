@@ -6,14 +6,13 @@ import Pesquisa from './components/pages/Pesquisa';
 import Usuario from './components/pages/Usuario';
 import Favoritos from './components/pages/favoritos'
 
-import { AuthProvider } from './components/pages/AuthContext';
-import FavoritesProvider from './contexts/Favorites';
+import { AuthProvider } from './components/contexts/AuthContext';
+// import FavoritesProvider from './contexts/Favorites';
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <FavoritesProvider>
           <Router>
             <Routes>
               <Route exact path='/' element={<Home />} />
@@ -24,7 +23,6 @@ function App() {
               <Route exact path='/favoritos' element={<Favoritos />} />
             </Routes>
           </Router>
-        </FavoritesProvider>
       </AuthProvider>
     </div>
   );

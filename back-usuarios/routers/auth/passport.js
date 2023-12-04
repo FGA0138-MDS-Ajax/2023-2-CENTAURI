@@ -15,6 +15,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 })
 
+
+
 passport.use(
     new googleStrategy(
         {
@@ -43,12 +45,14 @@ passport.use(
                         // if user dosen't exist, we are adding the user to database
                         db.query(
                             "insert into USER set email = ?,  userName = ?, token = ?",
-                            [ profile.emails[0].value, profile.displayName, profile.id,],
+                            [ profile.emails[0].value, profile.displayName, profile.id],
                             (err, userAdded) => {
                                 if (err) {
-                                    return cb(err, false);
+                                    console.log(userAdded);
                                     console.log("err dectected");
+                                    return cb(err, false);
                                 } else {
+                                    console.log(userAdded);
                                     db.query(
                                         "select * from USER where token = ?",
                                         [profile.id],
@@ -82,7 +86,10 @@ router.get("/google/callback", passport.authenticate("google",), (req, res) => {
         const googleAuthToken = jwt.sign({ googleAuthToken: req.user[0].googleId }, "batataQUENTEQUENTEQUENTEQUEIMOU", { expiresIn: 86400000 })
         res.cookie("googleAuthToken", googleAuthToken, { expires: new Date(Date.now() + 86400 * 1000), httpOnly: true })
         // we are now redirecting the user to localhost:3000 which is our frontend
+        console.log("user exists", googleAuthToken);
         res.redirect("http://localhost:3000/pesquisa")
+    }else{
+        console.log("user does not exists");
     }
 });
 
@@ -92,7 +99,7 @@ router.get("/login/success", (req, res) => {
         res.status(200).json({
             success: true,
             message: "successfull",
-            user: [req.user[0].userName, req.user[0].emails, req.user[0].userImg]
+            user: [req.user[0].userName, req.user[0].email, req.user[0].token]
         });
     }
     else{

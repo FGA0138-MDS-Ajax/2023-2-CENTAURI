@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from "./Pesquisa.module.css";
 import { MeiliSearch } from 'meilisearch';
 import onda from "../img/Rectangle 8.svg";
@@ -12,9 +12,10 @@ import coracao from "../img/Coracao.svg";
 import login from "../img/Login.svg";
 import lupa from "../img/lupa.svg";
 import onda2 from "../img/Rectangle 22.svg";
-import { useAuth } from './AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import axios from "axios";
-import { useFavoriteContext } from './../../contexts/Favorites.js';
+// import { useFavoriteContext } from '../contexts/Favorites.js';
+
 
 function Pesquisa({id}) {
   const [searchResults, setSearchResults] = useState([]);
@@ -28,21 +29,26 @@ function Pesquisa({id}) {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
-  const {favorite, addFavorite} = useFavoriteContext();
-  const isFavorite = favorite.some((fav) => fav.id === id)
-//  const [favorite, setFavorite] = useState({
-//     favoritesId: '',
-//     userToken: '',
-//     documentId: ''
-//   });
+  //const {favorite, addFavorite} = useFavoriteContext();
+  // const isFavorite = favorite.some((fav) => fav.id === id)
+  const [favorite, setFavorite] = useState({
+      favoritesId: '',
+      userToken: '',
+      documentId: ''
+  });
   const [inputErrorList, setInputErrorList] = useState({});
   const [noResults, setNoResults] = useState(false); 
 
   const { isLoggedIn, logout, user, setUser } = useAuth(); 
 
-  let [userName, setUserName] = useState("");
-  let [userEmail, setUserEmail] = useState("");
-  let [userToken, setUserToken] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+
+  const paginainicial = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     axios.get("http://localhost:8800/auth/login/success", {
@@ -51,9 +57,14 @@ function Pesquisa({id}) {
       .then((res) => {
         if (res.status == 200) {
           console.log("testee", res.data);
-          setUserName(res.data.user[0]);
-          setUserEmail(res.data.user[0]);
-          setUserToken(res.data.user[0]);
+          console.log(res.data.user[0]);
+          console.log(res.data.user[1]);
+          console.log(res.data.user[2]);
+
+
+          setUserName( res.data.user[0]);
+          setUserEmail(res.data.user[1]);
+          setUserToken(res.data.user[2]);
         } else {
           console.log("No status");
         }
@@ -164,38 +175,44 @@ function Pesquisa({id}) {
     window.open(resource.link, '_blank');
   };
 
-  const handleFavoriteClick = (documentId) => {
-    addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
-  };
+  // const handleFavoriteClick = (documentId) => {
+  //   addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
+  // };
 
- {/*} const handleFavoriteClick = (documentId) => {
-    console.log(documentId);
-    console.log(user.userName);
-    console.log(userEmail);
+  async function saveFavorite (documentId){
     setFavorite({
       userToken: user.token,
       documentId: documentId,
     });
-    saveFavorite(documentId);
-  };
-
-  const saveFavorite = (documentId) => {
-    const data = {
-      favoritesId: "",
-      userToken: user.token,
-      documentId: documentId, // Certifique-se de passar o ID do documento aqui
-    };
-
-    axios.post('http://localhost:3000/create_favorite', data)
+    
+    // const data = {
+    //   favoritesId: "1",
+    //   userToken: userToken,
+    //   documentId: documentId
+    // };
+    // console.log(data);
+    await axios.post('http://localhost:8800/create_favorite', {
+      favoritesId: "2",
+      userToken: userToken,
+      documentId: documentId
+    }, {headers: {
+      'Content-Type': 'application/json'
+      }})
       .then(res => {
         alert(res.data);
+        console.log("deu certo?");
       })
-      .catch(function (error) {
-        if (error.response.status === 422) {
-          console.error(error.response.data.errors);
+      .catch(error => {
+        if (error.response && error.response.status === 404 || error.response.status === 500) {
+          console.error("não fez a requisição " + error.response);
+          console.log(error.config.data);
+        }else{
+          console.log(error.config.data);
+          console.log(error);
         }
       });
-  };*/}
+  
+  };
 
   const handleLogoutSucess = () => {
     logout();
@@ -215,7 +232,7 @@ function Pesquisa({id}) {
       <div>
         <img src={onda} className={styles.onda} alt="onda" />
         <img src={onda2} className={styles.onda2} alt="onda" />
-        <img src={logo} className={styles.logo} alt="logo" />
+        <img src={logo} className={styles.logo} alt="logo" onClick={paginainicial}/>
         {!isLoggedIn && (
           <div className={styles.button_login_container}>
             <div>
@@ -308,7 +325,7 @@ function Pesquisa({id}) {
                   <div
                     className={styles.botaoFav}
                     /*onClick={() => handleFavoriteClick(resource.id)}*/
-                    onClick={() => handleFavoriteClick(resource.id)}
+                    onClick={() => saveFavorite(resource.id)}
               
                   >
                     <img src={coracao} className={styles.coracao} />
@@ -319,16 +336,14 @@ function Pesquisa({id}) {
             )}
             <img src={unb} className={styles.documentImage} alt="Document" />
             <div className={styles.documentInfo}>
-              <h3 className={styles.titulo}>{resource.id}, {resource.title}</h3>
+              <h3 className={styles.titulo}>{resource.title}</h3>
               <p>{resource.content.substring(0, 400)}...</p>
             </div>
           </div>
         ))}
       </div>
     </div>
-  );
-  
-  
+  );      
 }
 
 export default Pesquisa;

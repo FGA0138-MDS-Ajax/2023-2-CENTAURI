@@ -3,12 +3,6 @@ const express = require('express');
 const router = require("express").Router()
 const pool = require("./../../db");
 
-//const app = require("./../../index.js");
-
-// const app = express();
-// const port = 3000;
-// Middleware to parse JSON in the request body
-// app.use(express.json());
 
 // Route to handle requests to create a favorite
 router.post('/create_favorite', async (req, res) => {
@@ -16,7 +10,7 @@ router.post('/create_favorite', async (req, res) => {
     const { favoritesId, userToken, documentId } = req.body;
     // Validate input
     if (!favoritesId || !userToken || !documentId) {
-      return res.status(400).json({ success: false, message: 'Invalid request body.' });
+      return res.status(300).json({ success: false, message: 'A' });
     }
 
     await createFavorite(pool, favoritesId, userToken, documentId);
@@ -80,27 +74,29 @@ async function listUserFavorites(pool, userEmail) {
   return favorites;
 }
 
-// router.post('/favoritos', (req, res) => {
+router.post('/favoritos', (req, res) => {
 
-//   const { favoritesId, userToken, documentId } = req.body;
+  console.log('Request received at /favoritos');
 
-//   // Verifique se o usuário está autenticado, caso contrário, retorne um erro
-//   if (!req.isAuthenticated()) {
-//     return res.status(401).json({ message: 'Usuário não autenticado.' });
-//   }
+  const { favoritesId, userToken, documentId } = req.body;
 
-//   // Lógica para salvar favoritos no banco de dados
-//   db.query(
-//     'INSERT INTO favorites (userToken, documentId) VALUES (?, ?)',
-//     [userToken, documentId],
-//     (err, result) => {
-//       if (err) {
-//         return res.status(500).json({ error: 'Erro ao salvar favorito.' });
-//       }
-//       return res.status(200).json({ message: 'Favorito salvo com sucesso.' });
-//     }
-//   );
-// });
+  // Verifique se o usuário está autenticado, caso contrário, retorne um erro
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: 'Usuário não autenticado.' });
+  }
+
+  // Lógica para salvar favoritos no banco de dados
+  db.query(
+    'INSERT INTO favorites (userToken, documentId) VALUES (?, ?)',
+    [userToken, documentId],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: 'Erro ao salvar favorito.' });
+      }
+      return res.status(200).json({ message: 'Favorito salvo com sucesso.' });
+    }
+  );
+});
 
 
-// module.exports = router;
+module.exports = router;

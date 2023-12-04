@@ -200,6 +200,13 @@
     height: 80px;
     left: 2%;
     position: absolute;
+    cursor: pointer;
+
+}
+
+.logo:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 
 }
 

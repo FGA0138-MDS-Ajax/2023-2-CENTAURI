@@ -8,7 +8,7 @@ import menina from "../img/meninaUsuario.svg";
 import estrela from "../img/estrela.svg";
 import onda from "../img/Rectangle23.svg";
 import botaoPesquisa from '../img/botaoPesquisa.svg';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 function Usuario() {
@@ -17,6 +17,8 @@ function Usuario() {
   const [favoriteDocuments, setFavoriteDocuments] = useState([]);
   const [users, setUsers] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
+
+  console.log(user);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -35,7 +37,7 @@ function Usuario() {
       setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
       console.log(res);
     } catch (error) {
-      console.log(error);
+      console.log("Erro para pegar usuarios:",error);
       return error;
     }
   };
@@ -54,7 +56,7 @@ function Usuario() {
     if (isLoggedIn) {
       getFavoriteDocuments();
     }
-  }, [setUsers, isLoggedIn]);
+  }, [isLoggedIn, user, getUsers, getFavoriteDocuments]);
 
   const handleLogout = () => {
     logout();
@@ -79,21 +81,11 @@ function Usuario() {
             <img src={retanguloBranco} className={styles.retanguloBranco} alt="Retângulo branco"></img>
             <p className={styles.nome}>Nome: {user?.name}</p>
             <p className={styles.email}>Email: {user?.email}</p>
+            {console.log("Objeto do Usuário:", user)}
             <img src={menina} className={styles.menina} alt="Desenho de uma menina"></img>
             <img src={onda} className={styles.onda} alt="Fundo com uma onda"></img>
             <div className={styles.onda}>
               <img src={estrela} className={styles.estrela} alt="Estrela para favoritar itens"></img>
-            </div>
-            <div>
-              <h2>Documentos Favoritos:</h2>
-              <ul>
-                {favoriteDocuments.map((document) => (
-                  <li key={document.id}>
-                    <p>{document.title}</p>
-                    {/* Adicione mais detalhes conforme necessário */}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
