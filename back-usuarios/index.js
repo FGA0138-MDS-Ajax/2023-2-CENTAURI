@@ -55,6 +55,25 @@ app.post('/create_favorite', async (req, res) => {
     
   });
 
+ app.post('/list_user_favorites', async (req, res) => {
+    try {
+      const {userEmail} = req.body;
+      
+      console.log("aaaaaaaa", userEmail.userEmail);
+      // Validate input
+      if (!userEmail) {
+        return res.status(400).json({ success: false, message: 'Invalid request body.' });
+      }
+  
+      const documents = await listUserFavorites(pool, userEmail.userEmail);
+  
+      res.json({ success: true, documents });
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
+  });
+
 // // app.use("/",userRoutes);
 // async function createFavorite(pool, favoritesId, userToken, documentId) {
 //     const result = await pool.execute(
@@ -81,7 +100,7 @@ async function createFavorite(pool, favoritesId, userToken, documentId) {
       if (result.affectedRows > 0) {
         console.log('Favorite added successfully!');
       } else {
-        console.log('Failed to add favorite.');
+        console.log('Failed to add favorite.\n');
         throw new Error('Failed to add favorite.');
       }
     } catch (error) {
@@ -89,6 +108,58 @@ async function createFavorite(pool, favoritesId, userToken, documentId) {
       throw error;
     }
 }
+
+async function listUserFavorites(pool, userEmail) {
+
+  const query = util.promisify(pool.query).bind(pool);
+  try {
+    const result = await query(
+      `
+        SELECT USER.email, DOCUMENT.docName, DOCUMENT.link, DOCUMENT.content, DOCUMENT.docKey, DOCUMENT.creationDate
+        FROM favorites
+        INNER JOIN USER ON favorites.userToken = USER.token
+        INNER JOIN DOCUMENT ON favorites.documentId = DOCUMENT.docKey
+        WHERE USER.email = (?)
+        ORDER BY USER.email
+      `, [userEmail]
+    );
+    if (result.affectedRows > 0) {
+      console.log('Favorite selection was successfull!');
+    } else {
+      console.log('Failed to select favorite.');
+      console.log("userEmail: ", userEmail); 
+      throw new Error('Failed to selecttt favorite.');
+    }
+
+
+    const [favorites] = await pool.query(query, userEmail.userEmail);
+
+    res.json({ success: true, documents });
+    
+    return favorites;
+  } catch (error) {
+    console.log("é aqui o problema?")
+    console.error('Error executing query:', error.message);
+    throw error;
+  }
+}
+
+
+// async function listUserFavorites(pool, userEmail) {
+//   const [favorites] = await pool.execute(
+//     `
+//     SELECT USER.email, DOCUMENT.docName, DOCUMENT.link, DOCUMENT.content, DOCUMENT.docKey, DOCUMENT.creationDate
+//     FROM favorites
+//     INNER JOIN USER ON favorites.userToken = USER.token
+//     INNER JOIN DOCUMENT ON favorites.documentId = DOCUMENT.docKey
+//     WHERE USER.email = ?
+//     ORDER BY USER.email
+//     `,
+//     [userEmail]
+//   );
+
+//   return favorites;
+// }
 
 app.listen(PORT, () =>{
     console.log(`Server running on port ${PORT}\n`)

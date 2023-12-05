@@ -5,77 +5,58 @@
 
   *{
     max-width: 100%;
-    margin: 0 auto; 
 }
 
 .userPage{
-    display: flex;
     flex-direction: column;
 }
 
+.userPage>div{
+    display: flex;
+}
+
 .containerSuperior{
-    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 100%;
-    background-image: url(../img/topoPagina.svg);
+    height: 37vh;
+
+
+    background-image: url(../img/Rectangle\ 8.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
 }
 
-
-/* .search_bar{
-    width: 50%;
-    height: 46px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background: #FAFAFA;
+.containerSuperior>img{
     display: flex;
-    border-radius: 60px;
-    padding: 0px 20px;
-    box-shadow: 0px 8px 4px 0px rgba(0, 0, 0, 0.25);
-    color: black;
+    height: fit-content;
+    margin: 2%;
+    margin-top: -4%;
+
+    width: 14.64vw;
+    height: 10.42vh;
+
 }
 
-.search_bar input{
-    background: transparent;
-    flex: 1;
-    border: 0;
-    outline: none;
-    padding: 24px 20px;
-    font-size: 20px;
-    color: black;
-    box-shadow: #929292;
-    z-index: 1;
-}
-
-.search_bar button img{
-    width: 30px;
-    z-index: 1;
-}
-
-.search_bar button{
-    border: 0;
-    border-radius: 50%;
-    width: 42px;
-    height: 43px;
-    background: #A7A3FF;
-    z-index: 1;
-}
-.search_bar button:hover{
+.logo:hover {
+    transform: scale(1.1);
     cursor: pointer;
-} */
-
-::placeholder{
-    color: #929292;
-    font-family: Poppins, serif;
-    font-size: 25px;
-    top: 60px;
 }
 
 .sair{
+    height: fit-content;
     
+    margin-top: -7%;
+    margin-right: 2%;
+
+
     background-color: #00305b;
     color: #FFFFFF;
     font-family: Poppins, serif;
     border-radius: 15px;
     box-shadow: 0px 4px 2px 0px rgba(77, 71, 195, 0.40);
+
 }
 
 .sair:hover {
@@ -84,44 +65,116 @@
 }
 
 .containerPrincipal{
+    display: flex;
     flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: row;
+
+    background-image: url(../img/RetanguloUsuario.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40vh;
+    
+    margin: 3%;
 }
 
 .userPanel {
-    background-image: url(../img/RetanguloUsuario.svg);
-    width: 1367px;
-    height: 309px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-family: Poppins, serif;
+    font-size: 20px; 
+
+    margin: 2%;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    
+    background-image: url(../img/RetanguloUsuarioB.svg);
+    background-repeat: no-repeat;
+
+    width: 39.24vw;
+    height: 17vh;
+    max-height: 30vh;
+
+    margin: 1%;
+    margin-bottom: 3%;
+
+    font-size: small;
+}
+
+.userCard>p{
+    font-weight: bold;
+}
+
+.favoritesContainer{
+    background-image: url(../img/Rectangle23.svg);
+    background-size: contain;
+    background-position: center;
+
+    width: 80%;
+
+    height: 50vh;
+    max-height: fit-content;
+
+    border-radius: 30%;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
 }
 
 
+.estrela {
+    height: 8vh;
+    margin: 0.5%;
+}
+
+/* 
 .retanguloBranco{
     position: absolute;
     width: 536px;
     height: 106px;
     top: 550px;
     left: 370px;
-}
+} */
 
+/* 
 .menina{
     position: absolute;
     top: 260px;
     left: 1200px;
-}
+} */
 
+/* 
 .estrela{
     position: absolute;
     top: 850px;
     left: 910px;
-}
+} */
 
+/* 
 .onda{
-    top: 63%;
-    left: 0%;
-    position: absolute;
-    width: 14540px;
-    height: 1043.74px;
-}
+    
+    width: 1540px;
+} */
 
+/* 
 .ola{
     position: absolute;
     top: 435px;
@@ -142,9 +195,9 @@
     top: 610px;
     left: 400px;
     font-family: Poppins, serif;
-}
+} */
 
-
+/* 
 @media (max-width: 560px) {
     .onda {
         display: flex;
@@ -154,4 +207,4 @@
         height: 20px;
         padding-top: 10px;
     }
-}
+} */

@@ -12,7 +12,6 @@
 .search_container{
     width: 80%;
     min-height: 100vh;
-    /* padding: 0 2rem; */
     background-position: center;
     background-size: cover;
     background-color: #FFFFFF;
@@ -106,7 +105,7 @@
 .grid {
     display: flex;
     flex-wrap: wrap;
-    max-width: 800px;
+    max-width: 90%;
     position: absolute;
     top: 40%;
     left: 3%;
@@ -251,16 +250,13 @@
 .periodo{
     font-family: Poppins, serif;
     display: flex;
-    /* justify-content: flex-start; */
     left: 100%;
 }
 
 .relevance{
     font-family: Poppins, serif;
-    
     display: flex;
     left: 10%;
-    /* justify-content: flex-start; */
    
     text-align: center;
     
@@ -275,7 +271,6 @@
     font-family: Poppins, serif;
     left: 400%;
     display: flex;
-    /* justify-content: flex-start; */
     
     
 }
@@ -312,9 +307,7 @@
     width: 140px;
     height: 30px;
     position: absolute;
-    /* display: flexbox; */
     justify-content: right;
-    /* align-items: center; */
     background-color: #00305b;
     color: #FFFFFF;
     font-family: Poppins, serif;
@@ -333,9 +326,7 @@
     width: 140px;
     height: 30px;
     position: absolute;
-    /* display: flexbox; */
     justify-content: right;
-    /* align-items: center; */
     background-color: #00305b;
     color: #FFFFFF;
     font-family: Poppins, serif;

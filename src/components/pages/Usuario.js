@@ -1,61 +1,59 @@
+// Import necessary libraries and components
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import styles from "./Usuario.module.css";
-import retanguloBranco from "../img/RetanguloUsuarioB.svg";
+
 import menina from "../img/meninaUsuario.svg";
 import estrela from "../img/estrela.svg";
-import onda from "../img/Rectangle23.svg";
-import botaoPesquisa from '../img/botaoPesquisa.svg';
+import logo from "../img/logo.svg";
+
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 function Usuario() {
+  // Destructure authentication information from useAuth
+  const [filteredResults, setFilteredResults] = useState([]);
   const { isLoggedIn, user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const paginainicial = () => {
+    navigate("/");
+  };
+
+  // State to hold the list of favorite documents
   const [favoriteDocuments, setFavoriteDocuments] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [onEdit, setOnEdit] = useState(null);
-
-  console.log(user);
-
+  const [userEmail, setUserEmail] = useState();
+  // Effect to fetch favorite documents when component mounts
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/error');
-    }
-  }, [isLoggedIn, navigate]);
-
-  function handleInputChange(event) {
-    users[event.target.decode.name] = event.target.value;
-    setUsers(users);
-  }
-
-  const getUsers = async () => {
-    try {
-      const res = await axios.get("http://localhost:8800");
-      setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
-      console.log(res);
-    } catch (error) {
-      console.log("Erro para pegar usuarios:",error);
-      return error;
-    }
-  };
-
-  const getFavoriteDocuments = async () => {
-    try {
-      const res = await axios.get(`http://localhost:3000/usuario/favoritos/${user.id}`);
-      setFavoriteDocuments(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getUsers();
     if (isLoggedIn) {
       getFavoriteDocuments();
     }
-  }, [isLoggedIn, user, getUsers, getFavoriteDocuments]);
+  }, [isLoggedIn, user]);
 
+  // Function to fetch the list of favorite documents
+  async function getFavoriteDocuments (userEmail){
+    setUserEmail({
+      userEmail: user?.email
+    })
+    console.log("useremail-->>>>", userEmail)
+
+    await axios.get('http://localhost:8800/list_user_favorites', {
+        userEmail: userEmail 
+      }, {headers: {
+        'Content-Type': 'application/json'
+        }}).then(res => {
+          console.log('Favorite Documents:', res.data.documents);
+        }).catch (error =>{
+          if(error.response.status === 400 || 500){
+            console.error('Error fetching favorite documents:', error);
+            console.error(error.config.data);
+
+          }
+
+        }) 
+  };
+  // Function to handle user logout
   const handleLogout = () => {
     logout();
     localStorage.setItem('isLoggedIn', 'false');
@@ -63,34 +61,61 @@ function Usuario() {
     navigate('/pesquisa');
   };
 
+  // JSX structure of the Usuario component
   return (
     <body className="before-login-body">
       {isLoggedIn ? (
         <body className={styles.userPage} alt="logged-body">
+
           <div className={styles.containerSuperior} alt="superior-container">
+            <img className={styles.logo} src={logo} onClick={paginainicial} />
             <button className={styles.sair} onClick={handleLogout}>Sair da conta</button>
-            {/* <form action="" className={styles.search_bar}>
-                <input type="text" placeholder="Faça sua pesquisa" />
-                <button type="submit" className={styles.botaoPesquisa}><img src={botaoPesquisa} alt="Ícone de pesquisa" /></button>
-            </form> */}
+
           </div>
+
           <div className={styles.containerPrincipal} alt="main-container">
-            <div alt="user-info-container">
+
+            <div className={styles.userContainer} alt="user-info-container">
+
               <div className={styles.userPanel} alt="user-panel">
-                <h1 className={styles.ola}>Olá, {user?.name}</h1>
+
+                <h1>Olá, confira seus dados:</h1>
+                
+                <div className={styles.userCard} alt="user-card">
+
+                  <p>Nome: {user?.name}</p>
+                  <p>Email: {user?.email}</p>
+
+                </div>
+
               </div>
+
+              <img src={menina} className={styles.menina} alt="Desenho de uma menina"></img>
+
+            </div>
+
+            <div className={styles.favoritesContainer} alt="favorites-container">
               
-              <img src={retanguloBranco} className={styles.retanguloBranco} alt="Retângulo branco"></img>
-                <p className={styles.nome}>Nome: {user?.name}</p>
-                <p className={styles.email}>Email: {user?.email}</p>
+              <img src={estrela} className={styles.estrela} alt="Estrela"></img>
+
+              <h1> Favoritos </h1>
+              
+              <div class="input-box">{filteredResults.map((resource) =>(
+                <div key={resource.id} className={styles.documentContainer}>
+
+                </div>
+              ))}
+
+                <label for="teste"> Pesquisa_titulo_owfgG</label>
+
+              </div>
+
             </div>
-            <img src={menina} className={styles.menina} alt="Desenho de uma menina"></img>
-            <img src={onda} className={styles.onda} alt="Fundo com uma onda"></img>
-            <div className={styles.onda}>
-              <img src={estrela} className={styles.estrela} alt="Estrela para favoritar itens"></img>
-            </div>
+
           </div>
+
         </body>
+
       ) : null}
     </body>
   );

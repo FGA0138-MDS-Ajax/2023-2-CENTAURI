@@ -14,7 +14,7 @@ import lupa from "../img/lupa.svg";
 import onda2 from "../img/Rectangle 22.svg";
 import { useAuth } from '../contexts/AuthContext';
 import axios from "axios";
-// import { useFavoriteContext } from '../contexts/Favorites.js';
+
 
 
 function Pesquisa({id}) {
@@ -29,8 +29,6 @@ function Pesquisa({id}) {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [filterControlsVisible, setFilterControlsVisible] = useState(false);
   const [selectedDocumentId, setSelectedDocumentId] = useState(null);
-  //const {favorite, addFavorite} = useFavoriteContext();
-  // const isFavorite = favorite.some((fav) => fav.id === id)
   const [favorite, setFavorite] = useState({
       favoritesId: '',
       userToken: '',
@@ -186,9 +184,7 @@ function Pesquisa({id}) {
     window.open(resource.link, '_blank');
   };
 
-  // const handleFavoriteClick = (documentId) => {
-  //   addFavorite({ id: documentId }); // Adiciona ou remove o documento dos favorito
-  // };
+
   function getRandom() {
     return Math.random();
   }
@@ -198,13 +194,11 @@ function Pesquisa({id}) {
       userToken: user.token,
       documentId: documentId,
     });
-    
-    // const data = {
-    //   favoritesId: "1",
-    //   userToken: userToken,
-    //   documentId: documentId
-    // };
-    // console.log(data);
+
+    setUserEmail({
+      userEmail: user.email
+    })
+
     await axios.post('http://localhost:8800/create_favorite', {
       favoritesId: getRandom(4),
       userToken: userToken,
@@ -214,7 +208,7 @@ function Pesquisa({id}) {
       }})
       .then(res => {
         alert("documento adicionado com sucesso!");
-        console.log("deu certo?");
+        console.log("deu certo!");
       })
       .catch(error => {
         if (error.response && error.response.status === 404 || error.response.status === 500) {
@@ -226,6 +220,21 @@ function Pesquisa({id}) {
           console.log(error);
         }
       });
+
+      await axios.post('http://localhost:8800/list_user_favorites', {
+        userEmail: userEmail 
+      }, {headers: {
+        'Content-Type': 'application/json'
+        }}).then(res => {
+          console.log('Favorite Documents:', res.data.documents);
+        }).catch (error =>{
+          if(error.response.status === 400){
+            console.error('Error fetching favorite documents:', error);
+            console.error(error.config.data);
+
+          }
+
+        }) 
   
   };
 
@@ -339,7 +348,6 @@ function Pesquisa({id}) {
                 {isLoggedIn && (
                   <div
                     className={styles.botaoFav}
-                    /*onClick={() => handleFavoriteClick(resource.id)}*/
                     onClick={() => saveFavorite(resource.id)}
               
                   >

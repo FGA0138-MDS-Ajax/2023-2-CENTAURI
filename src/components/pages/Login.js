@@ -29,7 +29,7 @@ function Login() {
         // Chame a função login do contexto para salvar as informações do usuário
         login({ name: res.data.user[0], email: res.data.user[1] });
         // Redirecione para a página desejada após o login
-        navigate('/pesquisa');
+        //navigate('/pesquisa');
       } else {
         console.log("No status");
       }
