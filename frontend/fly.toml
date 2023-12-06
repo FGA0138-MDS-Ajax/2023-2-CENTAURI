@@ -1,12 +1,10 @@
-# fly.toml app configuration file generated for 2023-2-centauri-young-paper-8026 on 2023-12-05T21:46:03-03:00
+# fly.toml app configuration file generated for frontendunb on 2023-12-05T23:50:37-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "2023-02-centauri"
+app = "frontendunb"
 primary_region = "gru"
-kill_signal = "SIGTERM"
-kill_timeout = 120
 
 [build]
 

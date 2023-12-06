@@ -145,60 +145,70 @@
     margin: 0.5%;
 }
 
-/* 
-.retanguloBranco{
-    position: absolute;
-    width: 536px;
-    height: 106px;
-    top: 550px;
-    left: 370px;
-} */
+.estrela:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
-/* 
-.menina{
-    position: absolute;
-    top: 260px;
-    left: 1200px;
-} */
-
-/* 
-.estrela{
-    position: absolute;
-    top: 850px;
-    left: 910px;
-} */
-
-/* 
-.onda{
+.documentContainer {
     
-    width: 1540px;
-} */
+    display: flex;
 
-/* 
-.ola{
-    position: absolute;
-    top: 435px;
-    left: 370px;
-    font-family: Poppins, serif;
-    font-size: 50px; 
+    flex-direction: row;
+    background-color: #F0EFFF;
+    /* align-items: center; */
+    justify-content: center;
+    /* padding-left: 100px; */
+    flex-wrap: wrap;
+    margin: 2%;
+   
 }
 
-.nome{
-    position: absolute;
-    top: 570px;
-    left: 400px;
-    font-family: Poppins, serif;
+.documentCard{
+    
+    display: flex;
+
+    flex-direction: column;
+    
+    flex-wrap: wrap;
+    margin: 3%;
+   
 }
 
-.email{
-    position: absolute;
-    top: 610px;
-    left: 400px;
+.documentImage{
+    width: 4em;
+
+}
+
+.docName{
     font-family: Poppins, serif;
-} */
+    font-size: 12px; 
+    font-weight: lighter;  
+}
+.docLink{
+    font-family: Poppins, serif;
+    font-size: 12px; 
+    font-weight: lighter; 
+    display: flex;
+    justify-content: center;
+
+}
+
+.docLink:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+
+.documentInfo{
+    display: block;
+}
+
+
+
 
 /* 
-@media (max-width: 560px) {
+@media (max-widt:h: 560px) {
     .onda {
         display: flex;
         background-image: url(../img/Rectangle23.svg);

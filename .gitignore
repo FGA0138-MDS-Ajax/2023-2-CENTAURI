@@ -6,6 +6,8 @@
 .pnp.js
 /back-motor-de-busca/data.ms/indexes
 /back-usuarios/node_modules
+.env
+./frontend/env
 
 # testing
 /coverage

@@ -44,7 +44,7 @@ function Pesquisa({id}) {
   const { isLoggedIn, logout, user, setUser } = useAuth(); 
 
   const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userEmail, setUserEmail] = useState({});
   const [userToken, setUserToken] = useState("");
 
   const location = useLocation();
@@ -232,12 +232,10 @@ function Pesquisa({id}) {
         }}).then(res => {
           console.log('Favorite Documents:', res.data.documents);
         }).catch (error =>{
-          if(error.response.status === 400){
-            console.error('Error fetching favorite documents:', error);
-            console.error(error.config.data);
-
+          if(error.response.status > 400){
+            console.error('\nError fetching favorite documents:', error);
+            console.error("\n",error.config.data);
           }
-
         }) 
   
   };
@@ -340,6 +338,7 @@ function Pesquisa({id}) {
               className={styles.bolinha}
               onClick={() => handleToggleBolinhaMenu(resource.id)}
             />
+
             {selectedDocumentId === resource.id && (
               <div className={styles.bolinhaMenu}>
                 <div
@@ -361,6 +360,7 @@ function Pesquisa({id}) {
                 )}
               </div>
             )}
+            
             <img src={unb} className={styles.documentImage} alt="Document" />
             <div className={styles.documentInfo}>
               <h3 className={styles.titulo}>{resource.title}</h3>

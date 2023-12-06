@@ -117,8 +117,8 @@
   }
   
   .documentImage {
-    width: 200px; 
-    height: 200px; 
+    width: 12em; 
+    height: 12em; 
     margin-right: 10px;
   }
   
@@ -132,10 +132,15 @@
   }
 
 .bolinha{
-    top: 0%;
-    margin-top: -25%;
     cursor: pointer;
+    margin-bottom: 15%;
 }
+
+.bolinha:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .bolinhaMenu {
     position: absolute;
     background-color: #F0EFFF;
@@ -144,11 +149,15 @@
     border: 1px solid #ccc;
     padding: 10px;
     z-index: 1;
+    /* margin-top: 2.6%; */
+    margin-left: 2.6%;
   }
 
-.downloadAll{
+.downloadAll:hover{
     cursor: pointer;
+    transform: scale(1.06);
 }
+
 .botaoFav{
     cursor: pointer;
 }

@@ -1,0 +1,14 @@
+# flyctl launch added from .gitignore
+**\Document_Parser\example.pdf
+**\target
+**\.vscode\launch.json
+
+# flyctl launch added from Document_Parser\.gitignore
+Document_Parser\target
+
+# flyctl launch added from Server\.gitignore
+Server\target
+
+# flyctl launch added from WebScraper\.gitignore
+WebScraper\target
+fly.toml

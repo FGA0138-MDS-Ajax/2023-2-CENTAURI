@@ -132,4 +132,5 @@
     position: absolute;
     left: 1300px;
     top: 400px;
-    disp
+    display: flexbox;
+}
