@@ -1,0 +1,41 @@
+[app]
+  name = "frontendunb"
+  organization = "personal"
+  remote_interface = "0.0.0.0"
+  kill_signal = "SIGINT"
+
+[app.services]
+  [[app.services.ports]]
+    handlers = ["http"]
+    port = 3000
+
+[env]
+  FLY_APP=http://localhost:3000/
+
+[app]
+  name = "back-usuarios"
+  organization = "personal"
+  remote_interface = "0.0.0.0"
+  kill_signal = "SIGINT"
+
+[app.services]
+  [[app.services.ports]]
+    handlers = ["http"]
+    port = 8800
+
+[env]
+  FLY_APP=http://localhost:8800/
+
+[app]
+  name = "backend-meili"
+  organization = "personal"
+  remote_interface = "0.0.0.0"
+  kill_signal = "SIGINT"
+
+[app.services]
+  [[app.services.ports]]
+    handlers = ["http"]
+    port = 7700
+
+[env]
+  FLY_APP=http://localhost:7700/

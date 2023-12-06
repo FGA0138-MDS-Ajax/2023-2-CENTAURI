@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  }
+
+  *{
+    max-width: 100%;
+}
+
+.userPage{
+    flex-direction: column;
+}
+
+.userPage>div{
+    display: flex;
+}
+
+.containerSuperior{
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 37vh;
+
+
+    background-image: url(../img/Rectangle\ 8.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+.containerSuperior>img{
+    display: flex;
+    height: fit-content;
+    margin: 2%;
+    margin-top: -4%;
+
+    width: 14.64vw;
+    height: 10.42vh;
+
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.sair{
+    height: fit-content;
+    
+    margin-top: -7%;
+    margin-right: 2%;
+
+
+    background-color: #00305b;
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    border-radius: 15px;
+    box-shadow: 0px 4px 2px 0px rgba(77, 71, 195, 0.40);
+
+}
+
+.sair:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.containerPrincipal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: row;
+
+    background-image: url(../img/RetanguloUsuario.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40vh;
+    
+    margin: 3%;
+}
+
+.userPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    font-family: Poppins, serif;
+    font-size: 20px; 
+
+    margin: 2%;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    
+    background-image: url(../img/RetanguloUsuarioB.svg);
+    background-repeat: no-repeat;
+
+    width: 39.24vw;
+    height: 17vh;
+    max-height: 30vh;
+
+    margin: 1%;
+    margin-bottom: 3%;
+
+    font-size: small;
+}
+
+.userCard>p{
+    font-weight: bold;
+}
+
+.favoritesContainer{
+    background-image: url(../img/Rectangle23.svg);
+    background-size: contain;
+    background-position: center;
+
+    width: 80%;
+
+    height: 50vh;
+    max-height: fit-content;
+
+    border-radius: 30%;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+
+.estrela {
+    height: 8vh;
+    margin: 0.5%;
+}
+
+.estrela:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.documentContainer {
+    
+    display: flex;
+
+    flex-direction: row;
+    background-color: #F0EFFF;
+    /* align-items: center; */
+    justify-content: center;
+    /* padding-left: 100px; */
+    flex-wrap: wrap;
+    margin: 2%;
+   
+}
+
+.documentCard{
+    
+    display: flex;
+
+    flex-direction: column;
+    
+    flex-wrap: wrap;
+    margin: 3%;
+   
+}
+
+.documentImage{
+    width: 4em;
+
+}
+
+.docName{
+    font-family: Poppins, serif;
+    font-size: 12px; 
+    font-weight: lighter;  
+}
+.docLink{
+    font-family: Poppins, serif;
+    font-size: 12px; 
+    font-weight: lighter; 
+    display: flex;
+    justify-content: center;
+
+}
+
+.docLink:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+
+.documentInfo{
+    display: block;
+}
+
+
+
+
+/* 
+@media (max-widt:h: 560px) {
+    .onda {
+        display: flex;
+        background-image: url(../img/Rectangle23.svg);
+        background-position-x: center;
+        width: 200px;
+        height: 20px;
+        padding-top: 10px;
+    }
+} */

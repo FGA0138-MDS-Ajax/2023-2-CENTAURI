@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url(/src/components/fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+  }
+
+.login_container{
+    background-color: #F0EFFF;
+    background-size: cover;
+    width: 90%;
+    min-height: 100vh;
+    padding: 5%;
+    background-position: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.google_container button{
+    position: absolute;
+    width: 369px;
+    height: 59px;
+    flex-shrink: 0;
+    /* background-color: #00427D; */
+    border-radius: 9px;
+    box-shadow: 0px 4px 9px 0px rgba(77, 71, 195, 0.40);
+    color: #FFFFFF;
+    font-family: Poppins, serif;
+    font-size: 20px;
+    cursor: pointer;
+    top: 170px;
+    left: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* .botao_google {
+    color: #FFFFFF;
+} */
+
+
+.google_container button:hover{
+    transform: scale(1.1);
+    
+}
+
+
+.google_container{
+    position: absolute;
+    width: 464px;
+    height: 299px;
+    border-radius: 30px;
+    background-color: #FFFFFF; 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: Poppins, serif;
+    top: 279px;
+    left: 1200px;
+    display: flex;
+}
+
+.google_container h1 {
+    font-size: 32px;
+    text-align: center;
+    display: flex;
+}
+
+
+.bv {
+    position: absolute;
+    top: 700px;
+    left: 150px;
+    font-size: 45px;
+    color: #000;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.onda{
+    top: 0px;
+    left: -50px;
+    position: absolute;
+    width: 920px;
+    height: 1035px;
+    display: flex;
+}
+.ondablue{
+    top: 0px;
+    left: -35px;
+    position: absolute;
+    width: 920px;
+    height: 1035px;
+    display: flex;
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: flex;
+}
+
+.Menino {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    display: flex;
+    width: 34em;
+}
+
+.g {
+    position: absolute;
+    top: 190px;
+    left: 70px;
+    display: flex;
+}
+
+.dadosUser{
+    justify-content: center;
+    display: block;
+}
+
+.button_login{
+    width: 40px;
+    display: flex;
+}
+
+.c1{
+    position: absolute;
+    left: 1300px;
+    top: 400px;
+    display: flexbox;
+}
